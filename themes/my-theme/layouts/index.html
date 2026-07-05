@@ -1,0 +1,58 @@
+{{ define "main" }}
+<div class="post-list">
+  {{ $paginator := .Paginate .Site.RegularPages 10 }}
+  {{ range $paginator.Pages }}
+  <article class="post-card">
+
+    {{ with .Params.image }}
+      {{/* Пытаемся получить изображение как ресурс (Page Bundle или Assets) */}}
+      {{ $img := $.Resources.GetMatch . }}
+      {{ if not $img }}
+        {{ $img = resources.Get . }}
+      {{ end }}
+
+      <a href="{{ $.RelPermalink }}" class="post-image-link">
+        {{ if $img }}
+          {{/* Если ресурс найден, делаем умный кроп 700x368 */}}
+          {{ $processed := $img.Fill "700x368" }}
+          <img src="{{ $processed.RelPermalink }}" alt="{{ $.Title }}" class="post-image" loading="lazy">
+        {{ else }}
+          {{/* Если это просто ссылка на static/images/, выводим напрямую */}}
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="post-image" loading="lazy">
+        {{ end }}
+      </a>
+    {{ end }}
+
+    <div class="post-card-content">
+      <h2 class="post-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h2>
+      
+      <div class="post-meta">
+        {{ with .Params.categories }}
+          <span class="meta-item">
+            <strong>{{ T "rubric" }}:</strong>
+            {{ range first 1 . }}
+              <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
+            {{ end }}
+          </span>
+        {{ end }}
+        <span class="meta-item">
+          <strong>{{ T "date" }}:</strong> {{ .Date.Format "02.01.2006" }}
+        </span>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+      
+      <div class="post-summary">
+        {{ .Summary }}
+      </div>
+      
+      <a href="{{ .RelPermalink }}" class="read-more-btn">{{ T "read_more" }}</a>
+    </div>
+  </article>
+  {{ end }}
+</div>
+
+{{ template "_internal/pagination.html" . }}
+{{ end }}

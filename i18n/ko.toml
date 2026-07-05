@@ -1,0 +1,17 @@
+[rubric]
+other = "카테고리"
+
+[date]
+other = "날짜"
+
+[tags]
+other = "태그"
+
+[read_more]
+other = "더 읽어보기"
+
+[copyright]
+other = "© {{ .Year }}. 모든 권리 보유."
+
+[latest_posts]
+other = "최신 게시물"

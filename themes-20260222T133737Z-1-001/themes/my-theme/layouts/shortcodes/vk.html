@@ -1,0 +1,24 @@
+{{ $oid := .Get "oid" }}
+{{ $id := .Get "id" }}
+{{ $hash := .Get "hash" }}
+{{ $thumb := .Get "thumb" }}
+{{/* Устанавливаем 177% для клипов (9:16) и 56.25% для видео (16:9) */}}
+{{ $ratio := .Get "ratio" | default "56.25%" }}
+
+{{ $src := printf "https://vk.com/video_ext.php?oid=%s&id=%s" $oid $id }}
+{{ if $hash }}{{ $src = printf "%s&hash=%s" $src $hash }}{{ end }}
+
+<div class="vk-wrapper" style="max-width: {{ if eq $ratio "177%" }}380px{{ else }}100%{{ end }}; margin: 20px auto;">
+  <div class="vk-container" style="position: relative; padding-bottom: {{ $ratio | safeCSS }}; height: 0; overflow: hidden; background: #000; border-radius: 12px;">
+    <iframe
+      src="{{ $src | safeURL }}"
+      {{ if $thumb }}
+      srcdoc="<style>*{padding:0;margin:0;overflow:hidden;box-sizing:border-box}html,body{height:100%}img{position:absolute;width:100%;height:100%;top:0;object-fit:cover;opacity:0.8}span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font:48px serif;color:white;background:rgba(0,0,0,0.5);width:80px;height:80px;line-height:80px;text-align:center;border-radius:50%}</style><a href='{{ $src | safeURL }}&autoplay=1'><img src='{{ $thumb | safeURL }}'><span>▶</span></a>"
+      {{ end }}
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture;"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</div>

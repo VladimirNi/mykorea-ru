@@ -1,0 +1,90 @@
+baseURL = 'https://www.mykorea.ru/'
+title = 'MyKorea'
+theme = 'my-theme'
+defaultContentLanguage = 'ru'
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 3
+    endLevel = 4
+    ordered = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  description = "Блог о жизни в Южной Корее"
+
+[languages]
+  # --- РУССКИЙ ---
+  [languages.ru]
+    languageName = 'Русский'
+    languageCode = 'ru-ru'
+    contentDir = 'content/ru'
+    weight = 1
+    [languages.ru.params]
+      flag = 'images/flags/4x3/ru.svg'
+    [languages.ru.menu]
+      [[languages.ru.menu.main]]
+        name = "Главная"
+        url = "/"
+        weight = 10
+      [[languages.ru.menu.main]]
+        name = "Все посты"
+        url = "/posts/"
+        weight = 20
+      [[languages.ru.menu.main]]
+        name = "Поиск"
+        url = "/search/"
+        weight = 30
+
+  # --- КОРЕЙСКИЙ ---
+  [languages.ko]
+    languageName = '한국어'
+    languageCode = 'ko-kr'
+    contentDir = 'content/ko'
+    weight = 2
+    [languages.ko.params]
+      flag = 'images/flags/4x3/kr.svg'
+    [languages.ko.menu]
+      [[languages.ko.menu.main]]
+        name = "홈"
+        url = "/ko/"
+        weight = 10
+      [[languages.ko.menu.main]]
+        name = "모든 기사"
+        url = "/ko/posts/"
+        weight = 20
+      [[languages.ko.menu.main]]
+        name = "Поиск"
+        url = "/search/"
+        weight = 30
+
+  # --- АНГЛИЙСКИЙ ---
+  [languages.en]
+    languageName = 'English'
+    languageCode = 'en-us'
+    contentDir = 'content/en'
+    weight = 3
+    [languages.en.params]
+      flag = 'images/flags/4x3/us.svg'
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Home"
+        url = "/en/"
+        weight = 10
+      [[languages.en.menu.main]]
+        name = "All Posts"
+        url = "/en/posts/"
+        weight = 20
+      [[languages.en.menu.main]]
+        name = "Search"
+        url = "/search/"
+        weight = 30
+
+[imaging]
+  quality = 90

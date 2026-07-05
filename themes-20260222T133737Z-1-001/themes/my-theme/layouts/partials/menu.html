@@ -1,0 +1,24 @@
+{{/* Оборачиваем все меню в
+<nav>
+  */}}
+  <nav class="site-menu">
+    {{/* 1. Кнопка "Аккордеон" (Гамбургер) */}}
+    <button class="menu-toggle" aria-label="Открыть меню">
+      {{/* Этот span (и его :before, :after) будет иконкой */}}
+      <span></span>
+    </button>
+
+    {{/* 2. Сам список ссылок */}}
+    <div class="menu-links">
+      {{ if .Site.Menus.main }}
+      <ul>
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </nav>
+</nav>

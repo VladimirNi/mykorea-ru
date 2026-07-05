@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="max-image-preview:large" />
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    {{ $desc := "" }} {{ if .IsHome }} {{ $desc = .Site.Params.description }} {{
+    else if .Params.description }} {{ $desc = .Params.description }} {{ else }}
+    {{ $desc = .Summary }} {{ end }}
+    <meta name="description" content="{{ $desc | plainify | truncate 160 }}" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    {{ $style := resources.Get "css/main.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="site-header">
+        <div class="header-content-wrapper">
+          {{ partial "header.html" . }} {{ partial "menu.html" . }}
+        </div>
+      </header>
+
+      <main>{{ block "main" . }}{{ end }}</main>
+
+      <footer class="site-footer">{{ partial "footer.html" . }}</footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector(".menu-links");
+
+        if (toggle && menu) {
+          toggle.addEventListener("click", function (e) {
+            e.stopPropagation();
+            menu.classList.toggle("is-open");
+            toggle.classList.toggle("is-active");
+          });
+
+          document.addEventListener("click", function (e) {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+              menu.classList.remove("is-open");
+              toggle.classList.remove("is-active");
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

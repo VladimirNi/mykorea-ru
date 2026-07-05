@@ -1,0 +1,601 @@
+/* ---------------------------------
+   Базовые стили
+   --------------------------------- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://flatonika.ru/wp-content/uploads/2014/09/Krasivie-foni-dlya-sayta-Background-18-e1409775106531.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* ---------------------------------
+   Заголовки (единый размер)
+   --------------------------------- */
+h2,
+h3,
+h4,
+h5 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 1.2rem 0 0.6rem;
+}
+
+/* ---------------------------------
+   Главный контейнер
+   --------------------------------- */
+.wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+/* ---------------------------------
+   1. Шапка
+   --------------------------------- */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+/* === НОВЫЙ БЛОК: Обёртка лого и флагов === */
+.logo-and-lang {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Пробел между лого и флагами */
+}
+
+.logo {
+  margin: 0;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ee3e15;
+  display: block;
+}
+
+.logo img {
+  width: auto;
+  height: 37px;
+  display: block;
+}
+
+/* === НОВЫЙ БЛОК: Стили флагов === */
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem; /* Пробел между флагами */
+}
+
+.lang-flag {
+  display: block;
+  padding: 4px 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: 2px solid #ccc; /* Серая рамка (неактивный) */
+  color: #555;
+  background: #fff;
+}
+.lang-flag:hover {
+  border-color: #aaa;
+  color: #000;
+}
+.lang-flag.is-active {
+  border-color: #ee3e15; /* Оранжевая рамка (активный) */
+  color: #ee3e15;
+}
+
+/* ---------------------------------
+   2. Меню
+   --------------------------------- */
+.site-menu {
+  position: relative;
+}
+
+/* === ВОТ ИСПРАВЛЕНИЕ ДЛЯ ГАМБУРГЕРА === */
+.menu-toggle {
+  display: block;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Делаем область клика больше */
+  width: 40px; /* Общая ширина кнопки */
+  height: 40px; /* Общая высота кнопки */
+  position: relative;
+  z-index: 20; /* Поверх .menu-links */
+}
+
+/* Стили для span и pseudo-элементов, которые и есть "полоски" */
+.menu-toggle span,
+.menu-toggle span::before,
+.menu-toggle span::after {
+  display: block;
+  background-color: #ee3e15; /* Наш акцентный цвет */
+  height: 3px; /* Толщина полоски */
+  width: 25px; /* Длина полоски */
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* ::before (верхняя) и ::after (нижняя) - это pseudo-элементы для span */
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+/* Верхняя полоска (сдвигаем вверх) */
+.menu-toggle span::before {
+  top: -8px;
+}
+
+/* Нижняя полоска (сдвигаем вниз) */
+.menu-toggle span::after {
+  top: 8px;
+}
+/* === КОНЕЦ ИСПРАВЛЕНИЯ === */
+
+.menu-links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 200px;
+  padding: 0.5rem;
+}
+
+.menu-links.menu-open {
+  display: block;
+}
+
+.menu-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.menu-links li {
+  margin: 0;
+  width: 100%;
+}
+
+.menu-links a {
+  display: block;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu-links a:hover {
+  background: #f4f4f4;
+  color: #ee3e15;
+}
+
+@media (min-width: 700px) {
+  .menu-toggle {
+    display: none;
+  }
+  .menu-links {
+    display: block !important;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .menu-links ul {
+    flex-direction: row;
+  }
+  .menu-links li {
+    margin: 0 1rem;
+    width: auto;
+  }
+  .menu-links a {
+    padding: 0;
+  }
+  .menu-links a:hover {
+    background: none;
+  }
+}
+
+/* ---------------------------------
+   3. Контент
+   --------------------------------- */
+main a {
+  color: #ee3e15;
+  text-decoration: none;
+}
+
+main a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------
+   4. Футер
+   --------------------------------- */
+.site-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* ---------------------------------
+   5. Список постов
+   --------------------------------- */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  /* gap: 2.5rem; */ /* === УБРАЛИ GAP === */
+}
+
+.post-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  overflow: hidden;
+  margin-bottom: 2.5rem; /* === ЗАМЕНИЛИ GAP НА MARGIN === */
+}
+
+/* --- Изображение --- */
+.post-image-link {
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+.post-image {
+  width: 100%;
+  height: 336px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+  transform: scale(1.02);
+}
+
+/* --- Контент карточки --- */
+.post-card-content {
+  padding: 0.5rem; /* === ИСПРАВЛЕНИЕ: БЫЛО 0rem === */
+}
+
+/* --- Мета-данные (под заголовком) --- */
+.post-meta {
+  font-size: 0.9rem;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.post-meta .meta-item {
+  margin-right: 0.5rem;
+}
+
+.post-meta a {
+  color: #ee3e15;
+  font-weight: 500;
+}
+.post-meta a:hover {
+  text-decoration: underline;
+}
+
+/* --- Заголовок --- */
+.post-title {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.post-title a {
+  font-size: 1.3rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.post-title a:hover {
+  color: #ee3e15;
+}
+
+/* --- Превью текста --- */
+.post-summary {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.post-summary p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+/* --- Кнопка "Открыть статью" --- */
+.read-more-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  /* === ВОТ ИСПРАВЛЕНИЕ === */
+  box-sizing: border-box; /* Включает padding ВНУТРЬ 100% ширины */
+
+  margin-top: 10px;
+  background-color: #ee3e15;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+.read-more-btn:hover {
+  background-color: #c9300e;
+  color: #fff;
+}
+
+/* ---------------------------------
+   6. Пагинация
+   --------------------------------- */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #555;
+}
+
+.pagination a:hover {
+  background: #f7f7f7;
+  color: #ee3e15;
+  border-color: #ee3e15;
+}
+
+.pagination .page-item.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.pagination .page-item.next a::after {
+  content: "Вперед →";
+}
+
+.pagination .page-item.prev a::before {
+  content: "← Назад";
+}
+
+/* ---------------------------------
+   7. Контент внутри поста (и превью)
+   --------------------------------- */
+.post-content img,
+.post-content iframe,
+.post-summary img,
+.post-summary iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 10px auto; /* 0 сверху, 10px снизу */
+  border-radius: 8px;
+}
+
+.post-content img,
+.post-summary img {
+  object-fit: cover;
+}
+
+.post-content iframe,
+.post-summary iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+
+.post-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-align: justify;
+}
+
+/* === НОВЫЙ БЛОК: Стили для тегов в конце поста === */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.post-tags strong {
+  color: #555;
+}
+.post-tags a {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: #ee3e15;
+  font-weight: 500;
+  text-decoration: none;
+}
+.post-tags a:hover {
+  background-color: #e0e0e0;
+  text-decoration: none;
+}
+
+/* ---------------------------------
+   8. Favicon (если потребуется)
+   --------------------------------- */
+link[rel="icon"] {
+  width: 32px;
+  height: 32px;
+}
+
+/* ---------------------------------
+   9. Стили для Оглавления (TOC)
+   --------------------------------- */
+.toc {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 0 auto 10px auto;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* === ВОТ ИСПРАВЛЕНИЕ === */
+
+/* Убираем отступ и точки у САМОГО ВЕРХНЕГО списка */
+.toc > ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Стили для вложенных списков (H4 и т.д.) */
+.toc ul ul {
+  list-style-type: disc; /* Возвращаем точки */
+  padding-left: 20px; /* Добавляем отступ для вложенности */
+  margin-top: 5px;
+}
+/* === КОНЕЦ ИСПРАВЛЕНИЯ === */
+
+.toc li {
+  margin-bottom: 0.25rem;
+}
+.toc a {
+  text-decoration: none;
+  color: #ee3e15;
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------
+   10. Стили для блока "Последние посты"
+   --------------------------------- */
+.latest-posts-block {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+.latest-posts-block h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.latest-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* 2 колонки на десктопе, 1 на мобильном */
+  gap: 1.5rem;
+}
+
+.latest-post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.latest-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.latest-post-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.latest-post-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.latest-post-content {
+  padding: 1rem;
+}
+
+.latest-post-content h4 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  color: #000;
+  /* Уберем подчеркивание при наведении на заголовок внутри карточки */
+  text-decoration: none;
+}
+.latest-post-content h4:hover {
+  color: #ee3e15; /* Изменим цвет при наведении */
+  text-decoration: underline;
+}
+
+.latest-post-summary {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.latest-post-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+  .latest-posts-grid {
+    grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+  }
+}

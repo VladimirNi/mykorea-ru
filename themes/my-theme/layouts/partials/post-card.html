@@ -1,0 +1,44 @@
+{{ $page := . }}
+<article class="post-card">
+  {{ with $page.Params.image }}
+    {{ $img := $page.Resources.GetMatch . }}
+    {{ if not $img }}
+      {{ $img = resources.Get . }}
+    {{ end }}
+
+    <a href="{{ $page.RelPermalink }}" class="post-image-link" aria-label="{{ $page.Title }}">
+      {{ if $img }}
+        {{ $processed := $img.Fill "700x368 Center" }}
+        <img
+          src="{{ $processed.RelPermalink }}"
+          width="700"
+          height="368"
+          alt="{{ $page.Title }}"
+          class="post-image"
+          loading="lazy"
+        >
+      {{ else }}
+        <img
+          src="{{ . | relURL }}"
+          alt="{{ $page.Title }}"
+          class="post-image"
+          loading="lazy"
+        >
+      {{ end }}
+    </a>
+  {{ end }}
+
+  <div class="post-card-content">
+    <h2 class="post-title">
+      <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+    </h2>
+
+    <div class="post-summary">
+      {{ $page.Summary | plainify | truncate 115 }}
+    </div>
+
+    <time class="post-date" datetime="{{ $page.Date.Format "2006-01-02" }}">
+      {{ time.Format "2 January 2006" $page.Date }}
+    </time>
+  </div>
+</article>

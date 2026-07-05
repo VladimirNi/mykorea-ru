@@ -1,0 +1,17 @@
+[rubric]
+other = "Category"
+
+[date]
+other = "Date"
+
+[tags]
+other = "Tags"
+
+[read_more]
+other = "Read More"
+
+[copyright]
+other = "© {{ .Year }}. All rights reserved."
+
+[latest_posts]
+other = "Latest Posts"

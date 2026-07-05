@@ -1,0 +1,51 @@
+{{/* Этот div-обертка нужен для Flexbox, чтобы лого и флаги были вместе */}}
+<div class="logo-and-lang">
+  {{/* 1. Логотип */}}
+  <div class="logo">
+    <a href="{{ .Site.Home.Permalink }}">
+      <img
+        src="/images/logo.webp"
+        alt="{{ .Site.Title }} - Логотип"
+        style="width: auto; height: 37px; display: block"
+      />
+    </a>
+  </div>
+
+  {{/* 2. НОВЫЙ БЛОК: Переключатель языков */}} {{ if hugo.IsMultilingual }}
+  <nav class="lang-switcher">
+    {{ $page := . }} {{/* Перебираем ВСЕ языки, указанные в hugo.toml (RU, KO,
+    EN) */}} {{ range .Site.Languages }} {{ $lang := . }} {{/* Язык в цикле
+    (напр. 'en') */}} {{ $isCurrent := eq . $page.Site.Language }} {{/* Ищем
+    перевод, перебирая 'AllTranslations' (это работает везде) */}} {{
+    $translation := "" }} {{ range $page.AllTranslations }} {{ if eq .Language
+    $lang }} {{ $translation = . }} {{ end }} {{ end }} {{ if $isCurrent }} {{/*
+    1. Активный язык (не ссылка) */}}
+    <span class="lang-flag is-active" title="{{ $lang.LanguageName }}">
+      {{ $lang.Params.flag }}
+    </span>
+
+    {{ else if $translation }} {{/* 2. Перевод НАЙДЕН (ссылка на
+    .../en/posts/my-post/) */}}
+    <a
+      href="{{ $translation.Permalink }}"
+      class="lang-flag"
+      title="{{ $lang.LanguageName }}"
+    >
+      {{ $lang.Params.flag }}
+    </a>
+
+    {{ else }} {{/* 3. Перевод НЕ НАЙДЕН (ссылка на главную /en/) */}} {{/* ===
+    ВОТ ИСПРАВЛЕНИЕ === */}} {{/* Это самый надежный способ найти Главную
+    страницу для конкретного языка (напр. "ko") */}} {{ $homePage :=
+    site.GetPage (printf "/_index.%s" $lang.Lang) }} {{ if $homePage }}
+    <a
+      href="{{ $homePage.Permalink }}"
+      class="lang-flag"
+      title="{{ $lang.LanguageName }} (Перевод не найден)"
+    >
+      {{ $lang.Params.flag }}
+    </a>
+    {{ end }} {{/* === КОНЕЦ ИСПРАВЛЕНИЯ === */}} {{ end }} {{ end }}
+  </nav>
+  {{ end }}
+</div>

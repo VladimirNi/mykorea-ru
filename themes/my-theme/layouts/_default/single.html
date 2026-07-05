@@ -1,0 +1,115 @@
+{{ define "main" }}
+<article class="post-card">
+
+  {{/* 1. ИЗОБРАЖЕНИЕ (Обложка поста) - (Этот блок не меняем) */}}
+  {{ with .Params.image }}
+    <div class="post-image-link">
+      {{ $img := resources.Get . }}
+      {{ if $img }}
+        {{ $img = $img.Resize "700x" }}
+        <img src="{{ $img.RelPermalink }}" alt="{{ $.Title }}" class="post-image" loading="lazy" />
+      {{ end }}
+    </div>
+  {{ end }}
+
+  <div class="post-card-content">
+
+    <h1 class="post-title" style="font-size: 1.3rem;">{{ .Title }}</h1>
+
+    <div class="post-meta" style="margin-top: 0.5rem;">
+      {{ with .Params.categories }}
+        <span class="meta-item">
+          <strong>{{ T "rubric" }}:</strong>
+          {{ range first 1 . }}
+            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
+          {{ end }}
+        </span>
+      {{ end }}
+      <span class="meta-item">
+        <strong>{{ T "date" }}:</strong> {{ time.Format "2 January 2006" .Date }}
+      </span>
+    </div>
+    
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.tags }}
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+      
+      <div class="post-tags">
+        <strong>{{ T "tags" }}:</strong>
+        {{ range . }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+
+
+    {{/* === БЛОК ПЕРЕХОДА В ВК (ВМЕСТО КОММЕНТАРИЕВ) === */}}
+    {{ with .Params.vk_discussion }}
+    <div class="vk-discussion-panel" style="background: #f0f2f5; border-radius: 12px; padding: 25px; margin: 30px 0; text-align: center; border: 1px solid #e1e4e8;">
+        <div style="margin-bottom: 15px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#0077FF" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.162 18.994c-6.098 0-9.57-4.172-9.714-11.104h3.04c.1 5.093 2.348 7.25 4.126 7.696V7.89h2.86v4.392c1.75-.186 3.593-2.181 4.214-4.392h2.86a8.553 8.553 0 01-3.877 5.56 8.74 8.74 0 014.536 5.544h-3.155a4.706 4.706 0 00-4.63-3.396v3.396h-.266z"/>
+            </svg>
+        </div>
+        <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #222;">Обсудить публикацию</h4>
+        <p style="margin: 0 0 20px 0; font-size: 0.9rem; color: #555;">У нас живое сообщество в ВКонтакте. Присоединяйтесь к дискуссии!</p>
+        
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="vk-button" 
+           style="display: inline-block; background: #0077FF; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.3s ease;">
+           Перейти к обсуждению
+        </a>
+    </div>
+    {{ end }}
+    {{/* === КОНЕЦ БЛОКА === */}}
+
+
+    {{/* === ВОТ НОВЫЙ БЛОК "ПОСЛЕДНИЕ ПУБЛИКАЦИИ" === */}}
+    <div class="latest-posts-block">
+      <h3>{{ T "latest_posts" }}</h3>
+      <div class="latest-posts-grid">
+        {{ $currentPage := . }}
+        {{ $latestPosts := where .Site.RegularPages "Permalink" "ne" $currentPage.Permalink | first 10 }}
+        
+        {{/* === ВОТ ИСПРАВЛЕНИЕ === */}}
+        {{ range $latestPosts }}
+          {{/* 1. Сохраняем 'пост' в переменную $post */}}
+          {{ $post := . }} 
+          
+          <div class="latest-post-card">
+            {{/* 2. Используем $post.Permalink */}}
+            <a href="{{ $post.Permalink }}" class="latest-post-link">
+              
+              {{ with $post.Params.image }} {{/* 3. Используем $post */}}
+                {{ $img := resources.Get . }} {{/* '.' - это все еще строка/путь */}}
+                {{ if $img }}
+                  {{ $img = $img.Resize "600x315" }}
+                  <img src="{{ $img.RelPermalink }}" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 4. Используем $post.Title */}}
+                {{ else }}
+                  <img src="/images/default-thumbnail.jpg" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 5. Используем $post.Title */}}
+                {{ end }}
+              {{ else }}
+                <img src="/images/default-thumbnail.jpg" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 6. Используем $post.Title */}}
+              {{ end }}
+              
+              <div class="latest-post-content">
+                <h4>{{ $post.Title }}</h4>
+                <p class="latest-post-summary">{{ $post.Summary | plainify | truncate 100 }}</p>
+                <span class="latest-post-date">{{ time.Format "2 Jan 2006" $post.Date }}</span>
+              </div>
+            </a>
+          </div>
+        {{ end }}
+        {{/* === КОНЕЦ ИСПРАВЛЕНИЯ === */}}
+      </div>
+    </div>
+    {{/* === КОНЕЦ НОВОГО БЛОКА === */}}
+
+
+  </div>{{/* Закрывающий .post-card-content */}}
+</article>
+{{ end }}

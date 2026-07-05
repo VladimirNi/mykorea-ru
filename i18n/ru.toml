@@ -1,0 +1,17 @@
+[rubric]
+other = "Рубрика"
+
+[date]
+other = "Дата"
+
+[tags]
+other = "Теги"
+
+[read_more]
+other = "Открыть статью"
+
+[copyright]
+other = "© {{ .Year }}. Все права защищены."
+
+[latest_posts]
+other = "Последние публикации"

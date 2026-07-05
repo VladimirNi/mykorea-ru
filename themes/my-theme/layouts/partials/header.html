@@ -1,0 +1,38 @@
+<div class="logo-and-lang">
+  <div class="logo">
+    <a href="{{ .Site.Home.Permalink }}">
+      <img
+        src="/images/logo.webp"
+        alt="{{ .Site.Title }}"
+        style="height: 37px; width: auto"
+      />
+    </a>
+  </div>
+
+  {{ if hugo.IsMultilingual }}
+  <nav class="lang-switcher">
+    {{ $page := . }} {{ range .Site.Languages }} {{ $lang := . }} {{ $isCurrent
+    := eq $lang $page.Site.Language }} {{/* Ищем перевод текущей страницы */}}
+    {{ $translation := "" }} {{ range $page.AllTranslations }} {{ if eq
+    .Language $lang }}{{ $translation = . }}{{ end }} {{ end }} {{/* Ссылка или
+    активный флаг */}} {{ $url := "" }} {{ if $isCurrent }} {{ $url = "#" }} {{
+    else if $translation }} {{ $url = $translation.Permalink }} {{ else }} {{
+    $url = (or (site.GetPage (printf "/_index.%s" $lang.Lang))
+    site.Home).Permalink }} {{ end }}
+
+    <a
+      href="{{ $url }}"
+      class="lang-flag {{ if $isCurrent }}is-active{{ end }}"
+      title="{{ $lang.LanguageName }}"
+    >
+      <img
+        src="{{ $lang.Params.flag | relURL }}"
+        alt="{{ $lang.Lang }}"
+        class="flag-icon"
+        style="width: 30px; height: auto; border-radius: 2px"
+      />
+    </a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
