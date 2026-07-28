@@ -1,0 +1,70 @@
+[skip_to_content]
+other = "Skip to content"
+[home]
+other = "Home"
+[all_posts]
+other = "All posts"
+[all_posts_short]
+other = "Posts"
+[categories]
+other = "Categories"
+[all_categories]
+other = "All categories"
+[search]
+other = "Search"
+[language]
+other = "Language"
+[fresh_posts]
+other = "Latest posts"
+[minutes_short]
+other = "min"
+[minutes_read]
+other = "min read"
+[archive]
+other = "Archive"
+[no_posts]
+other = "No posts yet."
+[search_description]
+other = "Find a post by title, topic, or keyword."
+[search_not_configured]
+other = "Search is not configured yet."
+[tags]
+other = "Tags"
+[tag]
+other = "Tag"
+[discuss_publication]
+other = "Discuss this post"
+[vk_discussion_text]
+other = "Join the discussion in our VK community."
+[go_to_discussion]
+other = "Open discussion"
+[related_posts]
+other = "Related posts"
+[all_rights_reserved]
+other = "All rights reserved."
+[posts_count]
+other = "posts"
+[no_categories]
+other = "No categories yet."
+[category]
+other = "Category"
+[navigation]
+other = "Navigation"
+[quick_navigation]
+other = "Quick navigation"
+[pinned_posts]
+other = "Pinned"
+[scroll_left]
+other = "Scroll left"
+[scroll_right]
+other = "Scroll right"
+[contents]
+other = "Contents"
+[page_not_found]
+other = "Page not found"
+[page_not_found_text]
+other = "The address may have changed or the post may have moved."
+[go_home]
+other = "Back to home"
+[read_more]
+other = "Read the full post"

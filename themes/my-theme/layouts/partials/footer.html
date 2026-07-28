@@ -1,2 +1,7 @@
-{{/* Используем T "copyright" и передаем .Year, как мы указали в ru.toml */}}
-<p>{{ T "copyright" (dict "Year" now.Year) }}</p>
+<footer class="site-footer">
+  <div class="content-shell footer-inner">
+    <a class="footer-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    {{- with .Site.Params.description -}}<p>{{ . }}</p>{{- end -}}
+    <small>© {{ now.Year }} {{ .Site.Params.organizationName | default .Site.Title }}. {{ i18n "all_rights_reserved" | default "Все права защищены." }}</small>
+  </div>
+</footer>

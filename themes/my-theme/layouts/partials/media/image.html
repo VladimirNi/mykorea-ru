@@ -1,0 +1,33 @@
+{{- $page := .Page -}}
+{{- $src := .Src -}}
+{{- $alt := .Alt | default $page.Title -}}
+{{- $class := .Class | default "media-image" -}}
+{{- $loading := .Loading | default "lazy" -}}
+{{- $sizes := .Sizes | default "(max-width: 820px) 100vw, 760px" -}}
+{{- $path := strings.TrimPrefix "/" $src -}}
+{{- $resource := $page.Resources.GetMatch $path -}}
+{{- if not $resource }}{{ $resource = resources.Get $path }}{{ end -}}
+
+{{- if and $resource (ne $resource.MediaType.SubType "svg") -}}
+  {{- $small := $resource.Fill (.Small | default "560x360 Center webp q84") -}}
+  {{- $large := $resource.Fill (.Large | default "1000x640 Center webp q86") -}}
+  <img
+    class="{{ $class }}"
+    src="{{ $large.RelPermalink }}"
+    srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+    sizes="{{ $sizes }}"
+    width="{{ $large.Width }}"
+    height="{{ $large.Height }}"
+    alt="{{ $alt }}"
+    loading="{{ $loading }}"
+    decoding="async"
+  >
+{{- else if $resource -}}
+  <img class="{{ $class }}" src="{{ $resource.RelPermalink }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async">
+{{- else -}}
+  {{- $finalSrc := $src -}}
+  {{- if not (or (strings.HasPrefix $src "https://") (strings.HasPrefix $src "http://")) -}}
+    {{- $finalSrc = $src | relURL -}}
+  {{- end -}}
+  <img class="{{ $class }}" src="{{ $finalSrc | safeURL }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async">
+{{- end -}}

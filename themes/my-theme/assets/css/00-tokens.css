@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #ef3e2f;
+  --color-primary-dark: #c92d21;
+  --color-primary-soft: #fff4f1;
+  --color-text: #171717;
+  --color-heading: #101010;
+  --color-muted: #6b7078;
+  --color-border: #e9e9ec;
+  --color-surface: #ffffff;
+  --color-page: #f4f5f6;
+  --color-vk: #087df2;
+  --shadow-soft: 0 10px 30px rgba(17, 24, 39, 0.06);
+  --shadow-header: 0 8px 26px rgba(17, 24, 39, 0.08);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --content-width: 760px;
+  --header-height: 96px;
+  --bottom-nav-height: 84px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+}

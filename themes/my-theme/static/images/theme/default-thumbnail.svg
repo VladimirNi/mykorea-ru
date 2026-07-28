@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="MyKorea">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4f1"/>
+      <stop offset="1" stop-color="#eceff2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#g)"/>
+  <path d="M255 150h290v180H255z" fill="none" stroke="#ef3e2f" stroke-width="18" stroke-linejoin="round"/>
+  <circle cx="474" cy="209" r="25" fill="none" stroke="#ef3e2f" stroke-width="16"/>
+  <path d="m270 308 85-82 68 63 45-42 61 61" fill="none" stroke="#ef3e2f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

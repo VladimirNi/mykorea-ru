@@ -1,0 +1,58 @@
+{{- if ne .Site.Params.showPinStrip false -}}
+  {{- $pinCategory := .Site.Params.pinCategory | default "Pin" -}}
+  {{- $limit := int (.Site.Params.pinLimit | default 10) -}}
+  {{- $titleLength := int (.Site.Params.pinTitleLength | default 62) -}}
+  {{- $pinPages := where .Site.RegularPages "Params.categories" "intersect" (slice $pinCategory) -}}
+  {{- $pinPages = first $limit $pinPages.ByDate.Reverse -}}
+
+  {{- if gt (len $pinPages) 0 -}}
+    {{- $railID := printf "pin-posts-%s" .Site.Language.Name -}}
+    <section class="pin-strip" aria-labelledby="{{ $railID }}-title">
+      <div class="rail-shell">
+        <div class="rail-heading">
+          <h2 id="{{ $railID }}-title">
+            <span class="rail-heading-icon" aria-hidden="true">📌</span>
+            {{ i18n "pinned_posts" | default "Важное" }}
+          </h2>
+          <div class="rail-controls" data-rail-controls>
+            <button type="button" class="rail-button" data-rail-prev aria-label="{{ i18n "scroll_left" | default "Прокрутить влево" }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"></path></svg>
+            </button>
+            <button type="button" class="rail-button" data-rail-next aria-label="{{ i18n "scroll_right" | default "Прокрутить вправо" }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="rail-region" data-scroll-region>
+          <div id="{{ $railID }}" class="pin-posts-rail" data-scroll-track tabindex="0">
+            {{- range $pinPages -}}
+              {{- $post := . -}}
+              <article class="pin-post-card">
+                <a href="{{ $post.RelPermalink }}" class="pin-post-link">
+                  <span class="pin-post-media">
+                    {{- with $post.Params.image -}}
+                      {{ partial "media/image.html" (dict
+                        "Page" $post
+                        "Src" .
+                        "Alt" $post.Title
+                        "Class" "pin-post-image"
+                        "Small" "300x180 Center"
+                        "Large" "480x288 Center"
+                      ) }}
+                    {{- else -}}
+                      <span class="pin-post-placeholder" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m4 15 4-4 4 4 3-3 5 5"></path><circle cx="15.5" cy="9" r="1.5"></circle></svg>
+                      </span>
+                    {{- end -}}
+                  </span>
+                  <span class="pin-post-title">{{ $post.Title | plainify | htmlUnescape | truncate $titleLength }}</span>
+                </a>
+              </article>
+            {{- end -}}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{- end -}}
+{{- end -}}

@@ -1,5 +1,136 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+{{- $siteTitle := .Site.Title -}}
+{{- $homeTitle := .Site.Params.seoTitle | default $siteTitle -}}
+{{- $titleSeparator := .Site.Params.titleSeparator | default " — " -}}
+{{- $pageTitle := cond .IsHome $homeTitle (printf "%s%s%s" .Title $titleSeparator $siteTitle) -}}
+
+{{- $description := .Site.Params.description | default "" -}}
+{{- if not .IsHome -}}
+  {{- if .Description -}}
+    {{- $description = .Description -}}
+  {{- else if .Params.description -}}
+    {{- $description = .Params.description -}}
+  {{- else if .Summary -}}
+    {{- $description = .Summary | plainify -}}
+  {{- end -}}
+{{- end -}}
+{{- $description = $description | plainify | htmlUnescape | strings.TrimSpace -}}
+
+{{- $isSearch := eq .Layout "search" -}}
+{{- $noindex := or .Params.noindex $isSearch -}}
+
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $description | truncate 165 }}">
+<meta name="robots" content="{{ if $noindex }}noindex,follow{{ else }}index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1{{ end }}">
+<meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{- end }}
+{{- $xDefault := "" -}}
+{{- with index .Sites 0 -}}
+  {{- $xDefault = .Home.Permalink -}}
+  {{- $defaultLang := .Language.Name -}}
+  {{- range $.AllTranslations -}}
+    {{- if eq .Language.Name $defaultLang }}{{ $xDefault = .Permalink }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $xDefault }}
+<link rel="alternate" hreflang="x-default" href="{{ . }}">
+{{- end }}
+
+{{- with .OutputFormats.Get "RSS" }}
+<link rel="alternate" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
+{{- end }}
+
+<link rel="icon" type="image/png" href="{{ (.Site.Params.favicon | default "favicon-32x32.png") | relURL }}" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ (.Site.Params.appleTouchIcon | default "apple-touch-icon.png") | relURL }}">
+
+{{- $imageSource := .Params.image | default .Site.Params.defaultImage -}}
+{{- $imageURL := "" -}}
+{{- $imageWidth := 0 -}}
+{{- $imageHeight := 0 -}}
+{{- with $imageSource -}}
+  {{- $src := . -}}
+  {{- if or (strings.HasPrefix $src "https://") (strings.HasPrefix $src "http://") -}}
+    {{- $imageURL = $src -}}
+  {{- else -}}
+    {{- $path := strings.TrimPrefix "/" $src -}}
+    {{- $resource := $.Resources.GetMatch $path -}}
+    {{- if not $resource }}{{ $resource = resources.Get $path }}{{ end -}}
+    {{- if and $resource (ne $resource.MediaType.SubType "svg") -}}
+      {{- $og := $resource.Fill "1200x630 Center webp q86" -}}
+      {{- $imageURL = $og.Permalink -}}
+      {{- $imageWidth = $og.Width -}}
+      {{- $imageHeight = $og.Height -}}
+    {{- else if $resource -}}
+      {{- $imageURL = $resource.Permalink -}}
+    {{- else -}}
+      {{- $imageURL = $src | absURL -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $description | truncate 200 }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ $siteTitle }}">
+<meta property="og:locale" content="{{ replace .Site.Language.Locale "-" "_" }}">
+{{- range .Translations }}
+<meta property="og:locale:alternate" content="{{ replace .Site.Language.Locale "-" "_" }}">
+{{- end }}
+{{- with $imageURL }}
+<meta property="og:image" content="{{ . }}">
+{{- if gt $imageWidth 0 }}<meta property="og:image:width" content="{{ $imageWidth }}">{{ end }}
+{{- if gt $imageHeight 0 }}<meta property="og:image:height" content="{{ $imageHeight }}">{{ end }}
+<meta property="og:image:alt" content="{{ $.Title | default $.Site.Title }}">
+{{- end }}
+
+<meta name="twitter:card" content="{{ if $imageURL }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $description | truncate 200 }}">
+{{- with $imageURL }}<meta name="twitter:image" content="{{ . }}">{{ end }}
+
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- with .Params.author | default .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+{{- range .Params.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
+{{- end }}
+
+{{- $logoURL := (.Site.Params.logo | default "images/logo.webp") | absURL -}}
+{{- if .IsPage -}}
+  {{- $schema := dict
+      "@context" "https://schema.org"
+      "@type" "BlogPosting"
+      "headline" .Title
+      "description" ($description | truncate 300)
+      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+      "author" (dict "@type" "Person" "name" (.Params.author | default .Site.Params.author | default .Site.Title))
+      "publisher" (dict "@type" "Organization" "name" (.Site.Params.organizationName | default .Site.Title) "logo" (dict "@type" "ImageObject" "url" $logoURL))
+      "inLanguage" .Site.Language.Locale
+  -}}
+  {{- if $imageURL }}{{ $schema = merge $schema (dict "image" (slice $imageURL)) }}{{ end -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+{{- else if .IsHome -}}
+  {{- $schema := dict
+      "@context" "https://schema.org"
+      "@type" "WebSite"
+      "name" .Site.Title
+      "alternateName" (.Site.Params.alternateName | default "MyKorea")
+      "url" .Site.Home.Permalink
+      "description" $description
+      "inLanguage" .Site.Language.Locale
+      "publisher" (dict "@type" "Organization" "name" (.Site.Params.organizationName | default .Site.Title) "logo" (dict "@type" "ImageObject" "url" $logoURL))
+  -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+{{- end }}
+
 {{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}

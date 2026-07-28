@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 12px);
+  background: var(--color-page);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: var(--header-height) 0 calc(var(--bottom-nav-height) + var(--safe-bottom) + 20px);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--color-text);
+  background: var(--color-page);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% -10%, rgba(239, 62, 47, 0.05), transparent 34rem),
+    var(--color-page);
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(239, 62, 47, 0.25);
+  outline-offset: 3px;
+}
+
+.site-main {
+  min-height: 55vh;
+}
+
+.content-shell,
+.rail-shell {
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+  background: var(--color-surface);
+}
+
+.content-shell {
+  padding-inline: 22px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 1000;
+  transform: translateY(-180%);
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--color-heading);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.085em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 32px 20px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}

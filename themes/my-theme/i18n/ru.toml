@@ -1,0 +1,70 @@
+[skip_to_content]
+other = "Перейти к содержанию"
+[home]
+other = "Главная"
+[all_posts]
+other = "Все публикации"
+[all_posts_short]
+other = "Публикации"
+[categories]
+other = "Рубрики"
+[all_categories]
+other = "Все рубрики"
+[search]
+other = "Поиск"
+[language]
+other = "Язык"
+[fresh_posts]
+other = "Свежие публикации"
+[minutes_short]
+other = "мин"
+[minutes_read]
+other = "мин чтения"
+[archive]
+other = "Архив"
+[no_posts]
+other = "Публикаций пока нет."
+[search_description]
+other = "Найдите публикацию по названию, теме или ключевому слову."
+[search_not_configured]
+other = "Поиск ещё не настроен."
+[tags]
+other = "Теги"
+[tag]
+other = "Тег"
+[discuss_publication]
+other = "Обсудить публикацию"
+[vk_discussion_text]
+other = "Присоединяйтесь к обсуждению в нашем сообществе ВКонтакте."
+[go_to_discussion]
+other = "Перейти к обсуждению"
+[related_posts]
+other = "Похожие статьи"
+[all_rights_reserved]
+other = "Все права защищены."
+[posts_count]
+other = "публикаций"
+[no_categories]
+other = "Рубрик пока нет."
+[category]
+other = "Рубрика"
+[navigation]
+other = "Навигация"
+[quick_navigation]
+other = "Быстрая навигация"
+[pinned_posts]
+other = "Важное"
+[scroll_left]
+other = "Прокрутить влево"
+[scroll_right]
+other = "Прокрутить вправо"
+[contents]
+other = "Содержание"
+[page_not_found]
+other = "Страница не найдена"
+[page_not_found_text]
+other = "Возможно, адрес изменился или публикация была перемещена."
+[go_home]
+other = "Вернуться на главную"
+[read_more]
+other = "Читать полностью"

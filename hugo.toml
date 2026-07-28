@@ -1,90 +1,139 @@
-baseURL = 'https://www.mykorea.ru/'
-title = 'MyKorea'
-theme = 'my-theme'
-defaultContentLanguage = 'ru'
+baseURL = "https://www.mykorea.ru/"
+title = "Моя Корея"
+theme = "my-theme"
+defaultContentLanguage = "ru"
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
+enableEmoji = true
+enableInlineShortcodes = true
+timeZone = "Asia/Seoul"
+summaryLength = 70
 
 [pagination]
   pagerSize = 10
+  path = "page"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
+  expiryDate = ["expiryDate"]
 
 [markup]
   [markup.tableOfContents]
-    startLevel = 3
+    startLevel = 2
     endLevel = 4
     ordered = false
+
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-[params]
-  description = "Блог о жизни в Южной Корее"
-
-[languages]
-  # --- РУССКИЙ ---
-  [languages.ru]
-    languageName = 'Русский'
-    languageCode = 'ru-ru'
-    contentDir = 'content/ru'
-    weight = 1
-    [languages.ru.params]
-      flag = 'images/flags/4x3/ru.svg'
-    [languages.ru.menu]
-      [[languages.ru.menu.main]]
-        name = "Главная"
-        url = "/"
-        weight = 10
-      [[languages.ru.menu.main]]
-        name = "Все посты"
-        url = "/posts/"
-        weight = 20
-      [[languages.ru.menu.main]]
-        name = "Поиск"
-        url = "/search/"
-        weight = 30
-
-  # --- КОРЕЙСКИЙ ---
-  [languages.ko]
-    languageName = '한국어'
-    languageCode = 'ko-kr'
-    contentDir = 'content/ko'
-    weight = 2
-    [languages.ko.params]
-      flag = 'images/flags/4x3/kr.svg'
-    [languages.ko.menu]
-      [[languages.ko.menu.main]]
-        name = "홈"
-        url = "/ko/"
-        weight = 10
-      [[languages.ko.menu.main]]
-        name = "모든 기사"
-        url = "/ko/posts/"
-        weight = 20
-      [[languages.ko.menu.main]]
-        name = "Поиск"
-        url = "/search/"
-        weight = 30
-
-  # --- АНГЛИЙСКИЙ ---
-  [languages.en]
-    languageName = 'English'
-    languageCode = 'en-us'
-    contentDir = 'content/en'
-    weight = 3
-    [languages.en.params]
-      flag = 'images/flags/4x3/us.svg'
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        name = "Home"
-        url = "/en/"
-        weight = 10
-      [[languages.en.menu.main]]
-        name = "All Posts"
-        url = "/en/posts/"
-        weight = 20
-      [[languages.en.menu.main]]
-        name = "Search"
-        url = "/search/"
-        weight = 30
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
 
 [imaging]
-  quality = 90
+  quality = 88
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
+
+[related]
+  includeNewer = true
+  threshold = 55
+  toLower = true
+
+  [[related.indices]]
+    name = "categories"
+    weight = 100
+
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[services]
+  [services.rss]
+    limit = 50
+
+[sitemap]
+  changeFreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[minify]
+  minifyOutput = true
+
+[params]
+  author = "Владимир"
+  organizationName = "Моя Корея"
+  alternateName = "MyKorea"
+  description = "Личное медиа о жизни в Южной Корее: переезд, работа, учёба, путешествия, корейский язык и практический опыт."
+  seoTitle = "Моя Корея — жизнь, работа и путешествия в Южной Корее"
+  titleSeparator = " — "
+  logo = "images/logo.webp"
+  defaultImage = "images/logo.webp"
+  favicon = "favicon-32x32.png"
+  appleTouchIcon = "apple-touch-icon.png"
+  themeColor = "#ffffff"
+  dateFormat = "02.01.2006"
+
+  showPinStrip = true
+  pinCategory = "Pin"
+  pinLimit = 10
+  pinTitleLength = 62
+  hiddenCategories = ["Pin"]
+  homePageSize = 10
+
+  [params.search]
+    googleCSEID = "30b95c9519edb466e"
+
+[languages]
+  [languages.ru]
+    label = "Русский"
+    locale = "ru-RU"
+    contentDir = "content/ru"
+    weight = 1
+    title = "Моя Корея"
+
+    [languages.ru.params]
+      description = "Личное медиа о жизни в Южной Корее: переезд, работа, учёба, путешествия, корейский язык и практический опыт."
+      seoTitle = "Моя Корея — жизнь, работа и путешествия в Южной Корее"
+      flag = "images/flags/4x3/ru.svg"
+
+  [languages.ko]
+    label = "한국어"
+    locale = "ko-KR"
+    contentDir = "content/ko"
+    weight = 2
+    title = "마이코리아"
+
+    [languages.ko.params]
+      description = "한국 생활, 이주, 취업, 유학, 여행과 한국어에 관한 실용적인 미디어."
+      seoTitle = "마이코리아 — 한국 생활, 일과 여행"
+      flag = "images/flags/4x3/kr.svg"
+
+  [languages.en]
+    label = "English"
+    locale = "en-US"
+    contentDir = "content/en"
+    weight = 3
+    title = "My Korea"
+
+    [languages.en.params]
+      description = "A practical media site about life in South Korea, relocation, work, study, travel and the Korean language."
+      seoTitle = "My Korea — life, work and travel in South Korea"
+      flag = "images/flags/4x3/us.svg"

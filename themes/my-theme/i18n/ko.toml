@@ -1,0 +1,70 @@
+[skip_to_content]
+other = "본문으로 이동"
+[home]
+other = "홈"
+[all_posts]
+other = "모든 글"
+[all_posts_short]
+other = "글"
+[categories]
+other = "카테고리"
+[all_categories]
+other = "모든 카테고리"
+[search]
+other = "검색"
+[language]
+other = "언어"
+[fresh_posts]
+other = "최신 글"
+[minutes_short]
+other = "분"
+[minutes_read]
+other = "분 소요"
+[archive]
+other = "아카이브"
+[no_posts]
+other = "아직 게시물이 없습니다."
+[search_description]
+other = "제목, 주제 또는 키워드로 글을 검색하세요."
+[search_not_configured]
+other = "검색이 아직 설정되지 않았습니다."
+[tags]
+other = "태그"
+[tag]
+other = "태그"
+[discuss_publication]
+other = "게시물 토론"
+[vk_discussion_text]
+other = "VK 커뮤니티에서 대화에 참여하세요."
+[go_to_discussion]
+other = "토론 열기"
+[related_posts]
+other = "관련 글"
+[all_rights_reserved]
+other = "모든 권리 보유."
+[posts_count]
+other = "개 글"
+[no_categories]
+other = "아직 카테고리가 없습니다."
+[category]
+other = "카테고리"
+[navigation]
+other = "탐색"
+[quick_navigation]
+other = "빠른 메뉴"
+[pinned_posts]
+other = "중요 글"
+[scroll_left]
+other = "왼쪽으로 이동"
+[scroll_right]
+other = "오른쪽으로 이동"
+[contents]
+other = "목차"
+[page_not_found]
+other = "페이지를 찾을 수 없습니다"
+[page_not_found_text]
+other = "주소가 변경되었거나 게시물이 이동되었을 수 있습니다."
+[go_home]
+other = "홈으로"
+[read_more]
+other = "전체 글 읽기"

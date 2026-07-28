@@ -1,16 +1,18 @@
 {{ define "main" }}
-<div class="post-card">
-  <div class="post-card-content">
-    <h1 class="post-title" style="text-align: center; margin-bottom: 20px">
-      {{ .Title }}
-    </h1>
-    <div style="min-height: 400px">
-      <script
-        async
-        src="https://cse.google.com/cse.js?cx=30b95c9519edb466e"
-      ></script>
-      <div class="gcse-search"></div>
-    </div>
+  <div class="content-shell search-shell">
+    <header class="archive-header">
+      <span class="eyebrow">{{ i18n "search" | default "Поиск" }}</span>
+      <h1>{{ .Title }}</h1>
+      <p class="archive-description">{{ .Description | default (i18n "search_description" | default "Найдите публикацию по названию, теме или ключевому слову.") }}</p>
+    </header>
+
+    <section class="search-panel">
+      {{- with .Site.Params.search.googleCSEID -}}
+        <script async src="https://cse.google.com/cse.js?cx={{ . }}"></script>
+        <div class="gcse-search"></div>
+      {{- else -}}
+        <p>{{ i18n "search_not_configured" | default "Поиск ещё не настроен." }}</p>
+      {{- end -}}
+    </section>
   </div>
-</div>
 {{ end }}

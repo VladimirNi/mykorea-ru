@@ -1,9 +1,20 @@
-{{- with resources.Get "css/main.css" }}
-  {{- if hugo.IsDevelopment }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-  {{- end }}
+{{- $styles := slice
+  (resources.Get "css/00-tokens.css")
+  (resources.Get "css/10-base.css")
+  (resources.Get "css/20-header.css")
+  (resources.Get "css/30-pin-strip.css")
+  (resources.Get "css/40-cards.css")
+  (resources.Get "css/45-feed.css")
+  (resources.Get "css/50-article.css")
+  (resources.Get "css/60-components.css")
+  (resources.Get "css/70-bottom-nav.css")
+  (resources.Get "css/80-responsive.css")
+  (resources.Get "css/90-korbox.css")
+-}}
+{{- $bundle := $styles | resources.Concat "css/mykorea.css" -}}
+{{- if hugo.IsDevelopment -}}
+<link rel="stylesheet" href="{{ $bundle.RelPermalink }}">
+{{- else -}}
+  {{- $bundle = $bundle | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
 {{- end }}

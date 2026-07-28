@@ -1,115 +1,63 @@
 {{ define "main" }}
-<article class="post-card">
+  {{- $author := .Params.author | default .Site.Params.author -}}
+  <article class="article-page">
+    <header class="article-header content-shell">
+      {{- with .GetTerms "categories" -}}
+        {{- range first 1 . -}}<a class="eyebrow" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{- end -}}
+      {{- end -}}
 
-  {{/* 1. ИЗОБРАЖЕНИЕ (Обложка поста) - (Этот блок не меняем) */}}
-  {{ with .Params.image }}
-    <div class="post-image-link">
-      {{ $img := resources.Get . }}
-      {{ if $img }}
-        {{ $img = $img.Resize "700x" }}
-        <img src="{{ $img.RelPermalink }}" alt="{{ $.Title }}" class="post-image" loading="lazy" />
-      {{ end }}
-    </div>
-  {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{- with .Description | default .Params.description -}}<p class="article-lead">{{ . }}</p>{{- end -}}
 
-  <div class="post-card-content">
-
-    <h1 class="post-title" style="font-size: 1.3rem;">{{ .Title }}</h1>
-
-    <div class="post-meta" style="margin-top: 0.5rem;">
-      {{ with .Params.categories }}
-        <span class="meta-item">
-          <strong>{{ T "rubric" }}:</strong>
-          {{ range first 1 . }}
-            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
-          {{ end }}
-        </span>
-      {{ end }}
-      <span class="meta-item">
-        <strong>{{ T "date" }}:</strong> {{ time.Format "2 January 2006" .Date }}
-      </span>
-    </div>
-    
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-
-    <div class="post-content">
-      {{ .Content }}
-    </div>
-
-    {{ with .Params.tags }}
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-      
-      <div class="post-tags">
-        <strong>{{ T "tags" }}:</strong>
-        {{ range . }}
-          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
-        {{ end }}
+      <div class="article-meta">
+        {{- with $author -}}<span class="article-author">{{ . }}</span><span aria-hidden="true">·</span>{{- end -}}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format (.Site.Params.dateFormat | default "02.01.2006") .Date }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ .ReadingTime }} {{ i18n "minutes_read" | default "мин чтения" }}</span>
       </div>
-    {{ end }}
+    </header>
 
+    {{/* The front matter image is used for cards and SEO only.
+          Images inside the article are rendered solely from Markdown content. */}}
 
-    {{/* === БЛОК ПЕРЕХОДА В ВК (ВМЕСТО КОММЕНТАРИЕВ) === */}}
-    {{ with .Params.vk_discussion }}
-    <div class="vk-discussion-panel" style="background: #f0f2f5; border-radius: 12px; padding: 25px; margin: 30px 0; text-align: center; border: 1px solid #e1e4e8;">
-        <div style="margin-bottom: 15px;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#0077FF" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.162 18.994c-6.098 0-9.57-4.172-9.714-11.104h3.04c.1 5.093 2.348 7.25 4.126 7.696V7.89h2.86v4.392c1.75-.186 3.593-2.181 4.214-4.392h2.86a8.553 8.553 0 01-3.877 5.56 8.74 8.74 0 014.536 5.544h-3.155a4.706 4.706 0 00-4.63-3.396v3.396h-.266z"/>
-            </svg>
+    <div class="article-layout content-shell">
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+
+      {{- with .GetTerms "tags" -}}
+        <div class="post-tags" aria-label="{{ i18n "tags" | default "Теги" }}">
+          {{- range . -}}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{- end -}}
         </div>
-        <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #222;">Обсудить публикацию</h4>
-        <p style="margin: 0 0 20px 0; font-size: 0.9rem; color: #555;">У нас живое сообщество в ВКонтакте. Присоединяйтесь к дискуссии!</p>
-        
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="vk-button" 
-           style="display: inline-block; background: #0077FF; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.3s ease;">
-           Перейти к обсуждению
-        </a>
-    </div>
-    {{ end }}
-    {{/* === КОНЕЦ БЛОКА === */}}
+      {{- end -}}
 
-
-    {{/* === ВОТ НОВЫЙ БЛОК "ПОСЛЕДНИЕ ПУБЛИКАЦИИ" === */}}
-    <div class="latest-posts-block">
-      <h3>{{ T "latest_posts" }}</h3>
-      <div class="latest-posts-grid">
-        {{ $currentPage := . }}
-        {{ $latestPosts := where .Site.RegularPages "Permalink" "ne" $currentPage.Permalink | first 10 }}
-        
-        {{/* === ВОТ ИСПРАВЛЕНИЕ === */}}
-        {{ range $latestPosts }}
-          {{/* 1. Сохраняем 'пост' в переменную $post */}}
-          {{ $post := . }} 
-          
-          <div class="latest-post-card">
-            {{/* 2. Используем $post.Permalink */}}
-            <a href="{{ $post.Permalink }}" class="latest-post-link">
-              
-              {{ with $post.Params.image }} {{/* 3. Используем $post */}}
-                {{ $img := resources.Get . }} {{/* '.' - это все еще строка/путь */}}
-                {{ if $img }}
-                  {{ $img = $img.Resize "600x315" }}
-                  <img src="{{ $img.RelPermalink }}" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 4. Используем $post.Title */}}
-                {{ else }}
-                  <img src="/images/default-thumbnail.jpg" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 5. Используем $post.Title */}}
-                {{ end }}
-              {{ else }}
-                <img src="/images/default-thumbnail.jpg" alt="{{ $post.Title }}" class="latest-post-image" loading="lazy" /> {{/* 6. Используем $post.Title */}}
-              {{ end }}
-              
-              <div class="latest-post-content">
-                <h4>{{ $post.Title }}</h4>
-                <p class="latest-post-summary">{{ $post.Summary | plainify | truncate 100 }}</p>
-                <span class="latest-post-date">{{ time.Format "2 Jan 2006" $post.Date }}</span>
-              </div>
-            </a>
+      {{- with .Params.vk_discussion -}}
+        <section class="vk-discussion-panel">
+          <span class="vk-discussion-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13.2 19c-6.1 0-9.6-4.2-9.7-11.1h3c.1 5.1 2.4 7.2 4.2 7.7V7.9h2.8v4.4c1.8-.2 3.6-2.2 4.2-4.4h2.9a8.6 8.6 0 0 1-3.9 5.6 8.7 8.7 0 0 1 4.5 5.5H18a4.7 4.7 0 0 0-4.6-3.4V19z"></path></svg>
+          </span>
+          <div class="vk-discussion-copy">
+            <h2>{{ i18n "discuss_publication" | default "Обсудить публикацию" }}</h2>
+            <p>{{ i18n "vk_discussion_text" | default "Присоединяйтесь к обсуждению в нашем сообществе ВКонтакте." }}</p>
           </div>
-        {{ end }}
-        {{/* === КОНЕЦ ИСПРАВЛЕНИЯ === */}}
-      </div>
+          <a class="vk-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ i18n "go_to_discussion" | default "Перейти к обсуждению" }}</a>
+        </section>
+      {{- end -}}
+
+      {{- $related := .Site.RegularPages.Related . | first 4 -}}
+      {{- if eq (len $related) 0 -}}
+        {{- $related = where .Site.RegularPages "Permalink" "ne" .Permalink | first 4 -}}
+      {{- end -}}
+      {{- with $related -}}
+        <section class="related-section">
+          <div class="section-heading">
+            <h2>{{ i18n "related_posts" | default "Похожие статьи" }}</h2>
+          </div>
+          <div class="story-list related-list">
+            {{- range . -}}{{ partial "post-card.html" (dict "page" . "variant" "related") }}{{- end -}}
+          </div>
+        </section>
+      {{- end -}}
     </div>
-    {{/* === КОНЕЦ НОВОГО БЛОКА === */}}
-
-
-  </div>{{/* Закрывающий .post-card-content */}}
-</article>
+  </article>
 {{ end }}

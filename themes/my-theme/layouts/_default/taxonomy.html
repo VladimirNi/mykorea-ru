@@ -1,7 +1,10 @@
 {{ define "main" }}
   <div class="content-shell archive-shell">
     <header class="archive-header">
-      <span class="eyebrow">{{ i18n "archive" | default "Архив" }}</span>
+      {{- if eq .Data.Plural "categories" -}}
+        <a class="back-link" href="{{ "/categories/" | relLangURL }}"><span aria-hidden="true">←</span> {{ i18n "all_categories" | default "Все рубрики" }}</a>
+      {{- end -}}
+      <span class="eyebrow">{{ if eq .Data.Plural "categories" }}{{ i18n "category" | default "Рубрика" }}{{ else }}{{ i18n "tag" | default "Тег" }}{{ end }}</span>
       <h1>{{ .Title }}</h1>
       {{- with .Content -}}<div class="archive-description post-content">{{ . }}</div>{{- end -}}
     </header>

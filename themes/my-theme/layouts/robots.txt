@@ -1,18 +1,11 @@
-# Оптимизированный robots.txt для Hugo
 User-agent: *
-
 {{- if eq hugo.Environment "production" }}
-# Разрешено для индексации на основном сайте
 Allow: /
-# Запрет индексации служебных разделов и тегов (по желанию)
-Disallow: /tags/
-Disallow: /categories/
 Disallow: /search/
-Disallow: /404.html
+Disallow: /en/search/
+Disallow: /ko/search/
 
-# Указание пути к карте сайта
 Sitemap: {{ "sitemap.xml" | absURL }}
 {{- else }}
-# Полный запрет индексации для тестовых сред (staging, localhost)
 Disallow: /
 {{- end }}

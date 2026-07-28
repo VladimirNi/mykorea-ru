@@ -1,0 +1,39 @@
+{{- $page := . -}}
+{{- $author := $page.Params.author | default $page.Site.Params.author -}}
+
+<article class="feed-post">
+  <header class="feed-post-header">
+    {{- with $page.GetTerms "categories" -}}
+      <div class="feed-post-categories">
+        {{- range first 2 . -}}
+          <a class="eyebrow" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{- end -}}
+      </div>
+    {{- end -}}
+
+    <h2 class="feed-post-title">
+      <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+    </h2>
+
+    <div class="feed-post-meta">
+      {{- with $author -}}
+        <span class="feed-post-author">{{ . }}</span>
+        <span aria-hidden="true">·</span>
+      {{- end -}}
+      <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ time.Format ($page.Site.Params.dateFormat | default "02.01.2006") $page.Date }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ $page.ReadingTime }} {{ i18n "minutes_short" | default "мин" }}</span>
+    </div>
+  </header>
+
+  <div class="feed-post-body">
+    <div class="feed-post-summary post-content">
+      {{- $page.Summary -}}
+    </div>
+
+    <a class="feed-read-more" href="{{ $page.RelPermalink }}">
+      {{ i18n "read_more" | default "Читать полностью" }}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

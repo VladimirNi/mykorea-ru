@@ -1,0 +1,28 @@
+{{- $searchURL := "/search/" | relLangURL -}}
+{{- $categoriesURL := "/categories/" | relLangURL -}}
+{{- $postsURL := "/posts/" | relLangURL -}}
+{{- $isSearch := or (eq .Layout "search") (eq .RelPermalink $searchURL) -}}
+{{- $isCategories := and (or (eq .Kind "taxonomy") (eq .Kind "term")) (eq .Data.Plural "categories") -}}
+{{- $isPosts := or (eq .RelPermalink $postsURL) (and (eq .Section "posts") (not .IsHome)) -}}
+
+<nav class="bottom-nav" aria-label="{{ i18n "quick_navigation" | default "Быстрая навигация" }}">
+  <a href="{{ .Site.Home.RelPermalink }}" class="bottom-nav-link {{ if .IsHome }}is-active{{ end }}" {{ if .IsHome }}aria-current="page"{{ end }}>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.4a.8.8 0 0 1-.8.8H15v-6H9v6H3.8a.8.8 0 0 1-.8-.8z"></path></svg>
+    <span>{{ i18n "home" | default "Главная" }}</span>
+  </a>
+
+  <a href="{{ $categoriesURL }}" class="bottom-nav-link {{ if $isCategories }}is-active{{ end }}" {{ if $isCategories }}aria-current="page"{{ end }}>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>
+    <span>{{ i18n "categories" | default "Рубрики" }}</span>
+  </a>
+
+  <a href="{{ $searchURL }}" class="bottom-nav-link {{ if $isSearch }}is-active{{ end }}" {{ if $isSearch }}aria-current="page"{{ end }}>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+    <span>{{ i18n "search" | default "Поиск" }}</span>
+  </a>
+
+  <a href="{{ $postsURL }}" class="bottom-nav-link {{ if $isPosts }}is-active{{ end }}" {{ if $isPosts }}aria-current="page"{{ end }}>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 5h13M7 12h13M7 19h13"></path><circle cx="3" cy="5" r="1"></circle><circle cx="3" cy="12" r="1"></circle><circle cx="3" cy="19" r="1"></circle></svg>
+    <span>{{ i18n "all_posts_short" | default "Публикации" }}</span>
+  </a>
+</nav>

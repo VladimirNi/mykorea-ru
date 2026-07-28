@@ -1,58 +1,31 @@
 {{ define "main" }}
-<div class="post-list">
-  {{ $paginator := .Paginate .Site.RegularPages 10 }}
-  {{ range $paginator.Pages }}
-  <article class="post-card">
+  {{- $pages := where .Site.RegularPages "Params.exclude_from_home" "ne" true -}}
+  {{- $pages = where $pages "Layout" "ne" "search" -}}
+  {{- $pages = $pages.ByDate.Reverse -}}
 
-    {{ with .Params.image }}
-      {{/* Пытаемся получить изображение как ресурс (Page Bundle или Assets) */}}
-      {{ $img := $.Resources.GetMatch . }}
-      {{ if not $img }}
-        {{ $img = resources.Get . }}
-      {{ end }}
+  <div class="content-shell home-content">
+    {{- with .Content -}}
+      <section class="home-intro post-content">{{ . }}</section>
+    {{- end -}}
 
-      <a href="{{ $.RelPermalink }}" class="post-image-link">
-        {{ if $img }}
-          {{/* Если ресурс найден, делаем умный кроп 700x368 */}}
-          {{ $processed := $img.Fill "700x368" }}
-          <img src="{{ $processed.RelPermalink }}" alt="{{ $.Title }}" class="post-image" loading="lazy">
-        {{ else }}
-          {{/* Если это просто ссылка на static/images/, выводим напрямую */}}
-          <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="post-image" loading="lazy">
-        {{ end }}
-      </a>
-    {{ end }}
-
-    <div class="post-card-content">
-      <h2 class="post-title">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </h2>
-      
-      <div class="post-meta">
-        {{ with .Params.categories }}
-          <span class="meta-item">
-            <strong>{{ T "rubric" }}:</strong>
-            {{ range first 1 . }}
-              <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . | humanize }}</a>
-            {{ end }}
-          </span>
-        {{ end }}
-        <span class="meta-item">
-          <strong>{{ T "date" }}:</strong> {{ .Date.Format "02.01.2006" }}
-        </span>
+    <section class="home-section latest-section">
+      <div class="section-heading">
+        <h1>{{ i18n "fresh_posts" | default "Свежие публикации" }}</h1>
+        <a href="{{ "/posts/" | relLangURL }}">{{ i18n "all_posts" | default "Все публикации" }} <span aria-hidden="true">→</span></a>
       </div>
 
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-      
-      <div class="post-summary">
-        {{ .Summary }}
+      {{- $paginator := .Paginate $pages (.Site.Params.homePageSize | default 10) -}}
+      <div class="story-list feed-list">
+        {{- range $paginator.Pages -}}
+          {{ partial "post-feed-item.html" . }}
+        {{- else -}}
+          <p class="empty-state">{{ i18n "no_posts" | default "Публикаций пока нет." }}</p>
+        {{- end -}}
       </div>
-      
-      <a href="{{ .RelPermalink }}" class="read-more-btn">{{ T "read_more" }}</a>
-    </div>
-  </article>
-  {{ end }}
-</div>
 
-{{ template "_internal/pagination.html" . }}
+      {{ template "_internal/pagination.html" . }}
+    </section>
+
+    {{ partial "categories-carousel.html" . }}
+  </div>
 {{ end }}

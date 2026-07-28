@@ -1,0 +1,32 @@
+{{- if gt (len .Sites) 1 -}}
+  {{- $page := . -}}
+  <nav class="language-switcher" aria-label="{{ i18n "language" | default "Язык" }}">
+    {{- range $page.Sites -}}
+      {{- $targetSite := . -}}
+      {{- $isCurrent := eq $targetSite.Language.Name $page.Site.Language.Name -}}
+      {{- $targetURL := $targetSite.Home.RelPermalink -}}
+
+      {{- range $page.AllTranslations -}}
+        {{- if eq .Language.Name $targetSite.Language.Name -}}
+          {{- $targetURL = .RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+
+      <a
+        class="language-link {{ if $isCurrent }}is-current{{ end }}"
+        href="{{ $targetURL }}"
+        lang="{{ $targetSite.Language.Name }}"
+        hreflang="{{ $targetSite.Language.Locale }}"
+        title="{{ $targetSite.Language.Label }}"
+        aria-label="{{ $targetSite.Language.Label }}"
+        {{ if $isCurrent }}aria-current="true"{{ end }}
+      >
+        {{- with $targetSite.Params.flag -}}
+          <img src="{{ . | relURL }}" alt="" width="32" height="22">
+        {{- else -}}
+          <span>{{ upper $targetSite.Language.Name }}</span>
+        {{- end -}}
+      </a>
+    {{- end -}}
+  </nav>
+{{- end -}}

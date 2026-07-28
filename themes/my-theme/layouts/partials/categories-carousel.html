@@ -1,0 +1,36 @@
+{{- $hidden := .Site.Params.hiddenCategories | default (slice "Pin") -}}
+{{- $categories := slice -}}
+{{- range .Site.Taxonomies.categories.ByCount -}}
+  {{- if not (in $hidden .Page.LinkTitle) -}}
+    {{- $categories = $categories | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $categories) 0 -}}
+  {{- $railID := printf "category-rail-%s" .Site.Language.Name -}}
+  <section class="home-section categories-section" aria-labelledby="{{ $railID }}-title">
+    <div class="section-heading">
+      <h2 id="{{ $railID }}-title">{{ i18n "categories" | default "Рубрики" }}</h2>
+      <a href="{{ "/categories/" | relLangURL }}">{{ i18n "all_categories" | default "Все рубрики" }} <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="rail-region category-rail-region" data-scroll-region>
+      <button type="button" class="edge-scroll-button edge-scroll-button--prev" data-rail-prev aria-label="{{ i18n "scroll_left" | default "Прокрутить влево" }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"></path></svg>
+      </button>
+
+      <div id="{{ $railID }}" class="category-rail" data-scroll-track tabindex="0">
+        {{- range $categories -}}
+          <a class="category-card" href="{{ .Page.RelPermalink }}">
+            <strong>{{ .Page.LinkTitle }}</strong>
+            <span class="category-count">{{ .Count }}</span>
+          </a>
+        {{- end -}}
+      </div>
+
+      <button type="button" class="edge-scroll-button edge-scroll-button--next" data-rail-next aria-label="{{ i18n "scroll_right" | default "Прокрутить вправо" }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </section>
+{{- end -}}

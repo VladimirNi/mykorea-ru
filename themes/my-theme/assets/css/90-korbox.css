@@ -1,0 +1,407 @@
+/* ==========================================================================
+   KORBOX — новый калькулятор заказа
+   ========================================================================== */
+
+.korbox-calc {
+  margin: 1.5rem 0 1.2rem;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(230, 57, 40, 0.12),
+      transparent 34%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fff7f5 100%);
+  box-shadow: 0 10px 30px rgba(32, 32, 32, 0.08);
+  box-sizing: border-box;
+}
+
+.korbox-calc *,
+.korbox-calc *::before,
+.korbox-calc *::after {
+  box-sizing: border-box;
+}
+
+.korbox-calc-head {
+  margin-bottom: 14px;
+}
+
+.korbox-calc-title {
+  margin: 0 0 6px;
+  font-size: 1.22rem;
+  line-height: 1.25;
+  color: var(--color-text-header);
+}
+
+.korbox-calc-subtitle {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-secondary-text);
+}
+
+.korbox-calc-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 10px;
+  align-items: end;
+}
+
+.korbox-calc-field {
+  display: block;
+  min-width: 0;
+}
+
+.korbox-calc-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #3a3a3a;
+}
+
+.korbox-calc-input-wrap {
+  position: relative;
+}
+
+.korbox-calc-input,
+.korbox-calc-select {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #eadbd6;
+  border-radius: 14px;
+  background: #fff;
+  color: #202020;
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.korbox-calc-input {
+  padding: 0 44px 0 14px;
+}
+
+.korbox-calc-select {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.korbox-calc-input:focus,
+.korbox-calc-select:focus {
+  border-color: rgba(230, 57, 40, 0.55);
+  box-shadow: 0 0 0 4px rgba(230, 57, 40, 0.1);
+}
+
+.korbox-calc-input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.korbox-calc-unit {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: #777;
+  font-weight: 800;
+}
+
+.korbox-calc-btn {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(230, 57, 40, 0.22);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.korbox-calc-btn:hover {
+  background: var(--color-secondary-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(230, 57, 40, 0.28);
+}
+
+.korbox-calc-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 12px rgba(230, 57, 40, 0.2);
+}
+
+.korbox-calc-error {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(230, 57, 40, 0.09);
+  color: var(--color-secondary-accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.korbox-calc-results {
+  margin-top: 14px;
+  animation: korboxCalcFade 0.22s ease both;
+}
+
+@keyframes korboxCalcFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.korbox-calc-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.korbox-calc-result-card {
+  min-width: 0;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(230, 57, 40, 0.12);
+}
+
+.korbox-calc-result-card-regular {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fff9 100%);
+  box-shadow: inset 0 0 0 1px rgba(38, 166, 91, 0.16);
+}
+
+.korbox-calc-result-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.korbox-calc-client {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #202020;
+}
+
+.korbox-calc-badge {
+  flex-shrink: 0;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(230, 57, 40, 0.09);
+  color: var(--color-secondary-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.korbox-calc-badge-green {
+  background: rgba(38, 166, 91, 0.1);
+  color: #1f8b4c;
+}
+
+.korbox-calc-total {
+  font-size: 1.5rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--color-primary);
+  word-break: break-word;
+}
+
+.korbox-calc-usdt {
+  margin-top: 4px;
+  font-size: 0.86rem;
+  color: #666;
+  font-weight: 700;
+}
+
+.korbox-calc-small-rows {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.korbox-calc-small-rows div,
+.korbox-calc-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.korbox-calc-small-rows span,
+.korbox-calc-details span {
+  color: #666;
+  font-size: 0.82rem;
+}
+
+.korbox-calc-small-rows b,
+.korbox-calc-details b {
+  color: #202020;
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.korbox-calc-details {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  display: grid;
+  gap: 7px;
+}
+
+.korbox-calc-note {
+  margin: 10px 0 0;
+  color: #666;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   KORBOX — компактный блок связи
+   Можно оставить старый cta-block.html, этот CSS его аккуратно сожмёт
+   ========================================================================== */
+
+.contact-block-wrapper {
+  margin: 1rem 0 2rem;
+}
+
+.contact-card {
+  padding: 14px;
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(230, 57, 40, 0.1),
+      transparent 34%
+    ),
+    #ffffff;
+  box-shadow: 0 8px 24px rgba(32, 32, 32, 0.07);
+  box-sizing: border-box;
+}
+
+.contact-text {
+  margin: 0 0 10px;
+  color: var(--color-text-header);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 700;
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  flex: 1 1 120px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 13px;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 0.92rem;
+  font-weight: 800;
+  border-bottom: none !important;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+  border-bottom: none !important;
+}
+
+.contact-btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.btn-telegram {
+  background: #229ed9;
+  box-shadow: 0 6px 14px rgba(34, 158, 217, 0.22);
+}
+
+.btn-vk {
+  background: #0077ff;
+  box-shadow: 0 6px 14px rgba(0, 119, 255, 0.2);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  box-shadow: 0 6px 14px rgba(37, 211, 102, 0.18);
+}
+
+.contact-note {
+  margin: 9px 0 0;
+  color: var(--color-secondary-text);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Мобильная адаптация
+   ========================================================================== */
+
+@media (max-width: 700px) {
+  .korbox-calc {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .korbox-calc-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .korbox-calc-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .korbox-calc-total {
+    font-size: 1.42rem;
+  }
+
+  .korbox-calc-result-top {
+    align-items: center;
+  }
+
+  .contact-card {
+    padding: 13px;
+  }
+
+  .contact-buttons {
+    gap: 7px;
+  }
+
+  .contact-btn {
+    flex-basis: 100%;
+  }
+}
