@@ -1,7 +1,5 @@
 {{- $page := .page -}}
-{{- $variant := .variant | default "compact" -}}
-
-<article class="story-card story-card--{{ $variant }} {{ if $page.Params.image }}has-image{{ else }}no-image{{ end }}">
+<article class="story-card">
   {{- with $page.Params.image -}}
     <a class="story-card-image" href="{{ $page.RelPermalink }}" aria-label="{{ $page.Title }}">
       {{ partial "media/image.html" (dict
@@ -27,10 +25,6 @@
     {{- end -}}
 
     <h2 class="story-card-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
-
-    {{- if or (eq $variant "archive") (eq $variant "home") -}}
-      <p class="story-card-summary">{{ $page.Summary | plainify | htmlUnescape | truncate 150 }}</p>
-    {{- end -}}
 
     <div class="story-meta">
       <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ time.Format ($page.Site.Params.dateFormat | default "02.01.2006") $page.Date }}</time>

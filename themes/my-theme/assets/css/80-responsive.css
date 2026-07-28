@@ -4,10 +4,6 @@
     --bottom-nav-height: 80px;
   }
 
-  body {
-    font-size: 16px;
-  }
-
   .content-shell {
     padding-inline: 18px;
   }
@@ -85,10 +81,6 @@
     -webkit-line-clamp: 3;
   }
 
-  .story-card-summary {
-    display: none;
-  }
-
   .story-meta {
     font-size: 0.72rem;
   }
@@ -123,7 +115,6 @@
   .article-header h1 {
     font-size: clamp(1.78rem, 8.6vw, 2.2rem);
   }
-
 
   .article-layout {
     padding-top: 16px;

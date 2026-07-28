@@ -120,17 +120,6 @@
   color: var(--color-primary);
 }
 
-.story-card-summary {
-  margin: 0 0 9px;
-  display: -webkit-box;
-  overflow: hidden;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  line-height: 1.48;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
 .story-meta {
   display: flex;
   align-items: center;

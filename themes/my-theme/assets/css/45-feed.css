@@ -65,28 +65,8 @@
   padding: 18px 22px 22px;
 }
 
-.feed-post-summary {
-  color: #242528;
-  font-size: 0.98rem;
-  line-height: 1.68;
-}
-
-.feed-post-summary > :first-child {
-  margin-top: 0;
-}
-
 .feed-post-summary > :last-child {
   margin-bottom: 0;
-}
-
-.feed-post-summary h2 {
-  margin-top: 1.65em;
-  font-size: 1.24rem;
-}
-
-.feed-post-summary h3 {
-  margin-top: 1.45em;
-  font-size: 1.1rem;
 }
 
 .feed-post-summary .content-image,
@@ -162,11 +142,6 @@
 
   .feed-post-body {
     padding: 15px 17px 18px;
-  }
-
-  .feed-post-summary {
-    font-size: 0.96rem;
-    line-height: 1.66;
   }
 
   .feed-post-summary .content-image,

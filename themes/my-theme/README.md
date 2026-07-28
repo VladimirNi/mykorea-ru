@@ -16,7 +16,7 @@
 - сохранён блок перехода к обсуждению ВКонтакте;
 - CSS разбит по тематическим файлам;
 - добавлены canonical, hreflang, Open Graph, Twitter Card, JSON-LD, RSS и корректный robots.txt;
-- сохранены shortcode VK, YouTube, стили KorBOX и блока контактов.
+- сохранены shortcode VK и YouTube.
 
 ## Установка
 
@@ -114,4 +114,7 @@ exclude_from_home: true
 - `60-components.css` — поиск, пагинация, футер;
 - `70-bottom-nav.css` — нижнее меню;
 - `80-responsive.css` — адаптивность;
-- `90-korbox.css` — калькулятор KorBOX и контакты.
+
+## Очистка CSS
+
+В версии 4.0.5 проведён статический аудит всех шаблонов, shortcode и JavaScript темы. Удалены неиспользуемый файл `90-korbox.css`, мёртвые селекторы и переопределяемые декларации. Подробный отчёт находится в `CSS-AUDIT.md`.
