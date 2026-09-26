@@ -5,7 +5,7 @@ other = "Главная"
 [all_posts]
 other = "Все публикации"
 [all_posts_short]
-other = "Публикации"
+other = "Лента"
 [categories]
 other = "Рубрики"
 [all_categories]
@@ -43,7 +43,10 @@ other = "Похожие статьи"
 [all_rights_reserved]
 other = "Все права защищены."
 [posts_count]
-other = "публикаций"
+one = "публикация"
+few = "публикации"
+many = "публикаций"
+other = "публикации"
 [no_categories]
 other = "Рубрик пока нет."
 [category]
@@ -68,3 +71,20 @@ other = "Возможно, адрес изменился или публикац
 other = "Вернуться на главную"
 [read_more]
 other = "Читать полностью"
+
+[home_eyebrow]
+other = "Жизнь в Корее"
+[categories_description]
+other = "Выберите тему, которая вам интересна."
+[tags_description]
+other = "Люди, места и темы — всё по алфавиту."
+[no_topics]
+other = "Тем пока нет."
+[pagination]
+other = "Страницы"
+[previous_page]
+other = "Предыдущая страница"
+[next_page]
+other = "Следующая страница"
+[of]
+other = "из"

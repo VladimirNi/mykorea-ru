@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $isCategories := eq .Data.Plural "categories" }}
+{{ $hidden := .Site.Params.hiddenCategories | default (slice "Pin") }}
+{{ $hidden = $hidden | append (.Site.Params.pinCategory | default "Pin") }}
+{{ $terms := slice }}
+{{ range .Data.Terms.Alphabetical }}{{ if not (and $isCategories (in $hidden .Page.LinkTitle)) }}{{ $terms = $terms | append . }}{{ end }}{{ end }}
+<div class="content-shell taxonomy-shell">
+  <header class="archive-header"><span class="eyebrow">{{ i18n "navigation" }}</span><h1>{{ .Title }}</h1>
+    <p class="archive-description">{{ if $isCategories }}{{ i18n "categories_description" }}{{ else }}{{ i18n "tags_description" }}{{ end }}</p>
+    {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
+  </header>
+  <nav class="taxonomy-tabs" aria-label="{{ i18n "navigation" }}"><a href="{{ "/categories/" | relLangURL }}" {{ if $isCategories }}aria-current="page"{{ end }}>{{ i18n "categories" }}</a><a href="{{ "/tags/" | relLangURL }}" {{ if not $isCategories }}aria-current="page"{{ end }}>{{ i18n "tags" }}</a></nav>
+  <div class="{{ if $isCategories }}taxonomy-grid{{ else }}tag-index{{ end }}">
+    {{ range $terms }}
+      {{ if $isCategories }}
+      <a class="taxonomy-card" href="{{ .Page.RelPermalink }}"><span class="taxonomy-card-copy"><strong>{{ .Page.LinkTitle }}</strong><small>{{ .Count }} {{ i18n "posts_count" .Count }}</small></span><span class="taxonomy-card-arrow" aria-hidden="true">↗</span></a>
+      {{ else }}
+      <a class="tag-index-link" href="{{ .Page.RelPermalink }}"><span class="tag-hash" aria-hidden="true">#</span><span>{{ .Page.LinkTitle }}</span><small>{{ .Count }}</small></a>
+      {{ end }}
+    {{ else }}<p class="empty-state">{{ i18n "no_topics" }}</p>{{ end }}
+  </div>
+</div>
+{{ end }}

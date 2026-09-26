@@ -68,3 +68,20 @@ other = "주소가 변경되었거나 게시물이 이동되었을 수 있습니
 other = "홈으로"
 [read_more]
 other = "전체 글 읽기"
+
+[home_eyebrow]
+other = "한국에서의 생활"
+[categories_description]
+other = "관심 있는 주제를 선택하세요."
+[tags_description]
+other = "사람, 장소, 주제를 이름순으로 찾아보세요."
+[no_topics]
+other = "아직 주제가 없습니다."
+[pagination]
+other = "페이지 탐색"
+[previous_page]
+other = "이전 페이지"
+[next_page]
+other = "다음 페이지"
+[of]
+other = "/"

@@ -32,7 +32,7 @@
 <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
 {{- end }}
 {{- $xDefault := "" -}}
-{{- with index .Sites 0 -}}
+{{- with index hugo.Sites 0 -}}
   {{- $xDefault = .Home.Permalink -}}
   {{- $defaultLang := .Language.Name -}}
   {{- range $.AllTranslations -}}
@@ -47,8 +47,12 @@
 <link rel="alternate" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
 {{- end }}
 
-<link rel="icon" type="image/png" href="{{ (.Site.Params.favicon | default "favicon-32x32.png") | relURL }}" sizes="32x32">
-<link rel="apple-touch-icon" href="{{ (.Site.Params.appleTouchIcon | default "apple-touch-icon.png") | relURL }}">
+{{- $favicon := .Site.Params.favicon | default "" -}}
+{{- if and (not $favicon) (fileExists "static/favicon-32x32.png") }}{{ $favicon = "favicon-32x32.png" }}{{ end -}}
+{{ with $favicon }}<link rel="icon" href="{{ . | relURL }}">{{ end }}
+{{- $touchIcon := .Site.Params.appleTouchIcon | default "" -}}
+{{- if and (not $touchIcon) (fileExists "static/apple-touch-icon.png") }}{{ $touchIcon = "apple-touch-icon.png" }}{{ end -}}
+{{ with $touchIcon }}<link rel="apple-touch-icon" href="{{ . | relURL }}">{{ end }}
 
 {{- $imageSource := .Params.image | default .Site.Params.defaultImage -}}
 {{- $imageURL := "" -}}
@@ -62,7 +66,7 @@
     {{- $path := strings.TrimPrefix "/" $src -}}
     {{- $resource := $.Resources.GetMatch $path -}}
     {{- if not $resource }}{{ $resource = resources.Get $path }}{{ end -}}
-    {{- if and $resource (ne $resource.MediaType.SubType "svg") -}}
+    {{- if and $resource (in (slice "jpeg" "png" "webp" "tiff" "bmp") $resource.MediaType.SubType) -}}
       {{- $og := $resource.Fill "1200x630 Center webp q86" -}}
       {{- $imageURL = $og.Permalink -}}
       {{- $imageWidth = $og.Width -}}
@@ -103,7 +107,8 @@
 {{- range .Params.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
 {{- end }}
 
-{{- $logoURL := (.Site.Params.logo | default "images/logo.webp") | absURL -}}
+{{- $publisher := dict "@type" "Organization" "name" (.Site.Params.organizationName | default .Site.Title) -}}
+{{- with .Site.Params.logo -}}{{ $publisher = merge $publisher (dict "logo" (dict "@type" "ImageObject" "url" (. | absURL))) }}{{- end -}}
 {{- if .IsPage -}}
   {{- $schema := dict
       "@context" "https://schema.org"
@@ -114,7 +119,7 @@
       "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
       "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
       "author" (dict "@type" "Person" "name" (.Params.author | default .Site.Params.author | default .Site.Title))
-      "publisher" (dict "@type" "Organization" "name" (.Site.Params.organizationName | default .Site.Title) "logo" (dict "@type" "ImageObject" "url" $logoURL))
+      "publisher" $publisher
       "inLanguage" .Site.Language.Locale
   -}}
   {{- if $imageURL }}{{ $schema = merge $schema (dict "image" (slice $imageURL)) }}{{ end -}}
@@ -128,7 +133,7 @@
       "url" .Site.Home.Permalink
       "description" $description
       "inLanguage" .Site.Language.Locale
-      "publisher" (dict "@type" "Organization" "name" (.Site.Params.organizationName | default .Site.Title) "logo" (dict "@type" "ImageObject" "url" $logoURL))
+      "publisher" $publisher
   -}}
 <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
 {{- end }}

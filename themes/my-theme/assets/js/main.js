@@ -1,106 +1,44 @@
 (() => {
-  "use strict";
-
-  const header = document.querySelector("[data-site-header]");
-  const getScrollY = () => Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
-
-  let lastScrollY = getScrollY();
-  let lastDirection = null;
-  let directionDistance = 0;
-  let ticking = false;
-
-  const updateHeader = () => {
-    if (!header) return;
-
-    const currentY = getScrollY();
-    const delta = currentY - lastScrollY;
-
-    if (currentY <= 8) {
-      header.classList.remove("is-hidden", "is-scrolled");
-      lastDirection = null;
-      directionDistance = 0;
-    } else {
-      header.classList.add("is-scrolled");
-
-      if (Math.abs(delta) > 1) {
-        const direction = delta > 0 ? "down" : "up";
-
-        if (direction !== lastDirection) {
-          lastDirection = direction;
-          directionDistance = 0;
-        }
-
-        directionDistance += Math.abs(delta);
-
-        if (direction === "down" && currentY > header.offsetHeight && directionDistance >= 10) {
-          header.classList.add("is-hidden");
-          directionDistance = 0;
-        }
-
-        if (direction === "up" && directionDistance >= 6) {
-          header.classList.remove("is-hidden");
-          directionDistance = 0;
-        }
-      }
-    }
-
-    lastScrollY = currentY;
-    ticking = false;
-  };
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
-
-  window.addEventListener("pageshow", updateHeader);
-  updateHeader();
-
-  document.querySelectorAll("[data-scroll-region]").forEach((region) => {
-    const track = region.querySelector("[data-scroll-track]");
-    const prev = region.querySelector("[data-rail-prev]") || region.parentElement?.querySelector("[data-rail-prev]");
-    const next = region.querySelector("[data-rail-next]") || region.parentElement?.querySelector("[data-rail-next]");
-    const controls = region.closest("section")?.querySelector("[data-rail-controls]");
-
+  'use strict';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-scroll-region]').forEach(region => {
+    const track = region.querySelector('[data-scroll-track]');
+    const section = region.closest('section');
+    const prev = section?.querySelector('[data-rail-prev]');
+    const next = section?.querySelector('[data-rail-next]');
+    const controls = section?.querySelector('[data-rail-controls]');
     if (!track) return;
-
-    const getStep = () => Math.max(180, Math.round(track.clientWidth * 0.82));
-
-    const updateButtons = () => {
-      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-      const hasOverflow = maxScroll > 4;
-      const atStart = track.scrollLeft <= 4;
-      const atEnd = track.scrollLeft >= maxScroll - 4;
-
-      region.classList.toggle("has-overflow", hasOverflow);
-      controls?.classList.toggle("is-hidden", !hasOverflow);
-
-      if (prev) {
-        prev.disabled = !hasOverflow || atStart;
-        prev.setAttribute("aria-disabled", String(prev.disabled));
-      }
-      if (next) {
-        next.disabled = !hasOverflow || atEnd;
-        next.setAttribute("aria-disabled", String(next.disabled));
-      }
+    const update = () => {
+      const max = Math.max(0, track.scrollWidth - track.clientWidth);
+      controls?.classList.toggle('is-hidden', max <= 2);
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max - 2;
     };
-
-    prev?.addEventListener("click", () => {
-      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+    const move = direction => track.scrollBy({left: direction * Math.max(220, track.clientWidth * .85), behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    prev?.addEventListener('click', () => move(-1));
+    next?.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', update, {passive: true});
+    window.addEventListener('resize', update, {passive: true});
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    update();
+  });
+  const languages = document.querySelector('.language-menu');
+  if (languages) {
+    document.addEventListener('click', event => {
+      if (!languages.contains(event.target)) languages.open = false;
     });
-
-    next?.addEventListener("click", () => {
-      track.scrollBy({ left: getStep(), behavior: "smooth" });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && languages.open) {
+        languages.open = false;
+        languages.querySelector('summary')?.focus();
+      }
     });
-
-    track.addEventListener("scroll", updateButtons, { passive: true });
-    window.addEventListener("resize", updateButtons, { passive: true });
-    requestAnimationFrame(updateButtons);
+    document.addEventListener('focusin', event => {
+      if (!languages.contains(event.target)) languages.open = false;
+    });
+  }
+  // Focusable horizontal scrolling for authored tables; no dependency or body-level clipping.
+  document.querySelectorAll('.post-content table').forEach(table => {
+    table.tabIndex = 0;
   });
 })();

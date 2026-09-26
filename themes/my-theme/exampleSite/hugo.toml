@@ -1,0 +1,15 @@
+baseURL = "https://example.org/"
+title = "Моя Корея"
+theme = "my-theme"
+defaultContentLanguage = "ru"
+enableRobotsTXT = true
+[taxonomies]
+ category = "categories"
+ tag = "tags"
+[params]
+ description = "Люди, места и повседневная жизнь в Южной Корее."
+ mainSections = ["posts"]
+ shortTitle = "Моя Корея"
+[languages.ru]
+ label = "Русский"
+ locale = "ru-RU"

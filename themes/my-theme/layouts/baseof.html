@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}">
+<head>{{ partial "head.html" . }}</head>
+<body class="{{ if .IsHome }}page-home{{ else if .IsPage }}page-single{{ else }}page-list{{ end }}">
+  <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" }}</a>
+  <main id="main-content" class="site-main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+  {{ partial "footer.html" . }}
+  {{ partial "bottom-nav.html" . }}
+  {{ partialCached "head/js.html" . }}
+</body>
+</html>

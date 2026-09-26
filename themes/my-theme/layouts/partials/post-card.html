@@ -1,35 +1,20 @@
 {{- $page := .page -}}
+{{- $src := partial "media/thumbnail-source.html" $page -}}
+{{- $loading := .loading | default "lazy" -}}
 <article class="story-card">
-  {{- with $page.Params.image -}}
-    <a class="story-card-image" href="{{ $page.RelPermalink }}" aria-label="{{ $page.Title }}">
-      {{ partial "media/image.html" (dict
-        "Page" $page
-        "Src" .
-        "Alt" $page.Title
-        "Class" "story-image"
-        "Small" "300x220 Center webp q82"
-        "Large" "560x400 Center webp q85"
-      ) }}
-    </a>
-  {{- else -}}
-    <a class="story-card-image story-card-placeholder" href="{{ $page.RelPermalink }}" aria-label="{{ $page.Title }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"></path><path d="m4 15 4-4 4 4 3-3 5 5"></path><circle cx="15.5" cy="9" r="1.5"></circle></svg>
-    </a>
-  {{- end -}}
-
-  <div class="story-card-body">
-    {{- with $page.GetTerms "categories" -}}
-      {{- range first 1 . -}}
-        <a class="eyebrow" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-      {{- end -}}
+  <a class="story-card-image{{ if not $src }} story-card-placeholder{{ end }}" href="{{ $page.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{- if $src -}}
+      {{ partial "media/image.html" (dict "Page" $page "Src" $src "Alt" "" "Decorative" true "Class" "story-image" "Small" "192x144 Center webp q80" "Large" "384x288 Center webp q82" "Sizes" "(max-width: 380px) 88px, (max-width: 600px) 104px, 160px" "Loading" $loading) }}
+    {{- else -}}
+      <svg viewBox="0 0 80 60" aria-hidden="true"><circle cx="54" cy="18" r="7"/><path d="m8 49 21-27 16 18 9-10 19 19"/></svg>
     {{- end -}}
-
-    <h2 class="story-card-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
-
+  </a>
+  <div class="story-card-body">
+    {{- range first 1 (partial "visible-categories.html" $page) -}}<a class="eyebrow story-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{- end -}}
+    <h2 class="story-card-title"><a href="{{ $page.RelPermalink }}" title="{{ $page.Title }}">{{ $page.Title }}</a></h2>
     <div class="story-meta">
       <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ time.Format ($page.Site.Params.dateFormat | default "02.01.2006") $page.Date }}</time>
-      <span aria-hidden="true">·</span>
-      <span>{{ $page.ReadingTime }} {{ i18n "minutes_short" | default "мин" }}</span>
+      <span aria-hidden="true">·</span><span>{{ $page.ReadingTime }} {{ i18n "minutes_short" }}</span>
     </div>
   </div>
 </article>

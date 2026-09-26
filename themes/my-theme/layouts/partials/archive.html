@@ -1,0 +1,17 @@
+<div class="content-shell archive-shell">
+  <header class="archive-header">
+    {{ if eq .Kind "term" }}
+      <a class="back-link" href="{{ (printf "/%s/" .Data.Plural) | relLangURL }}">← {{ if eq .Data.Plural "categories" }}{{ i18n "all_categories" }}{{ else }}{{ i18n "tags" }}{{ end }}</a>
+      <span class="eyebrow">{{ if eq .Data.Plural "categories" }}{{ i18n "category" }}{{ else }}{{ i18n "tag" }}{{ end }}</span>
+    {{ else }}<span class="eyebrow">{{ i18n "archive" }}</span>{{ end }}
+    <h1>{{ .Title }}</h1>
+    <p class="archive-count">{{ len .RegularPagesRecursive }} {{ i18n "posts_count" (len .RegularPagesRecursive) }}</p>
+    {{ with .Content }}<div class="archive-description post-content">{{ . }}</div>{{ end }}
+  </header>
+  {{ $pages := .RegularPagesRecursive.ByDate.Reverse }}
+  {{ $paginator := .Paginate $pages (.Site.Params.archivePageSize | default 12) }}
+  <div class="story-list archive-list">
+    {{ range $i, $page := $paginator.Pages }}{{ partial "post-card.html" (dict "page" $page "loading" (cond (lt $i 2) "eager" "lazy")) }}{{ else }}<p class="empty-state">{{ i18n "no_posts" }}</p>{{ end }}
+  </div>
+  {{ partial "pagination.html" . }}
+</div>

@@ -1,0 +1,18 @@
+{{- $src := .Params.image | default .Params.thumbnail | default "" -}}
+{{- if not $src -}}
+  {{- with .Resources.GetMatch "{cover,featured,thumbnail}*" -}}{{ $src = .Name }}{{- end -}}
+{{- end -}}
+{{- if not $src -}}
+  {{- with .Resources.ByType "image" -}}{{ $src = (index . 0).Name }}{{- end -}}
+{{- end -}}
+
+{{- if not $src -}}
+  {{- $matches := findRESubmatch `!\[[^\]]*\]\(\s*<?([^\s)>]+)` .RawContent 1 -}}
+  {{- with $matches -}}{{ $src = index (index . 0) 1 }}{{- end -}}
+{{- end -}}
+{{- if not $src -}}
+  {{- $matches := findRESubmatch `<img\b[^>]*\bsrc=["']([^"']+)["']` .RawContent 1 -}}
+  {{- with $matches -}}{{ $src = index (index . 0) 1 }}{{- end -}}
+{{- end -}}
+{{- return $src -}}
+

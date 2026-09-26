@@ -5,8 +5,8 @@
 {{- $resource := .Page.Resources.GetMatch $path -}}
 {{- if not $resource }}{{ $resource = resources.Get $path }}{{ end -}}
 
-<figure class="content-image">
-  {{- if and $resource (ne $resource.MediaType.SubType "svg") -}}
+<span class="content-image">
+  {{- if and $resource (in (slice "jpeg" "png" "webp" "tiff" "bmp") $resource.MediaType.SubType) -}}
     {{- $targetWidth := $resource.Width -}}
     {{- if gt $targetWidth 1400 }}{{ $targetWidth = 1400 }}{{ end -}}
     {{- $processed := $resource.Resize (printf "%dx webp q86" $targetWidth) -}}
@@ -28,5 +28,5 @@
     {{- end -}}
     <img src="{{ $finalSrc | safeURL }}" alt="{{ $alt }}" loading="lazy" decoding="async" {{ with $title }}title="{{ . }}"{{ end }}>
   {{- end -}}
-  {{- with $title -}}<figcaption>{{ . }}</figcaption>{{- end -}}
-</figure>
+  {{- with $title -}}<span class="image-caption">{{ . }}</span>{{- end -}}
+</span>

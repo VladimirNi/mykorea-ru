@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{- $pages := where .Site.RegularPages "Params.exclude_from_home" "ne" true -}}
+{{- $pages = where $pages "Layout" "ne" "search" -}}
+{{- with .Site.Params.mainSections -}}{{ $pages = where $pages "Section" "in" . }}{{- end -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+<div class="content-shell home-content">
+  <header class="home-masthead">
+    <span class="eyebrow">{{ .Site.Params.homeEyebrow | default (i18n "home_eyebrow") }}</span>
+    <h1>{{ .Site.Params.homeHeading | default .Site.Title }}</h1>
+    {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+  </header>
+  {{ with .Content }}<div class="home-intro post-content">{{ . }}</div>{{ end }}
+  {{ partial "categories-carousel.html" . }}
+  {{ partial "pin-strip.html" . }}
+  <section class="latest-section" aria-labelledby="latest-title">
+    <div class="section-heading"><h2 id="latest-title">{{ i18n "fresh_posts" }}</h2><a href="{{ "/posts/" | relLangURL }}">{{ i18n "all_posts" }} <span aria-hidden="true">↗</span></a></div>
+    {{- $paginator := .Paginate $pages (.Site.Params.homePageSize | default 12) -}}
+    <div class="story-list">
+      {{ range $i, $page := $paginator.Pages }}{{ partial "post-card.html" (dict "page" $page "loading" (cond (lt $i 2) "eager" "lazy")) }}{{ else }}<p class="empty-state">{{ i18n "no_posts" }}</p>{{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  </section>
+</div>
+{{ end }}

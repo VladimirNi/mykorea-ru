@@ -43,6 +43,7 @@ other = "Related posts"
 [all_rights_reserved]
 other = "All rights reserved."
 [posts_count]
+one = "post"
 other = "posts"
 [no_categories]
 other = "No categories yet."
@@ -68,3 +69,20 @@ other = "The address may have changed or the post may have moved."
 other = "Back to home"
 [read_more]
 other = "Read the full post"
+
+[home_eyebrow]
+other = "Life in Korea"
+[categories_description]
+other = "Choose a topic to explore."
+[tags_description]
+other = "People, places and topics, from A to Z."
+[no_topics]
+other = "No topics yet."
+[pagination]
+other = "Pagination"
+[previous_page]
+other = "Previous page"
+[next_page]
+other = "Next page"
+[of]
+other = "of"

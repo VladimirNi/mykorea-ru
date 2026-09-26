@@ -1,0 +1,7 @@
+{{- $hidden := .Site.Params.hiddenCategories | default (slice "Pin") -}}
+{{- $hidden = $hidden | append (.Site.Params.pinCategory | default "Pin") -}}
+{{- $terms := slice -}}
+{{- range .GetTerms "categories" -}}
+  {{- if not (in $hidden .LinkTitle) -}}{{ $terms = $terms | append . }}{{- end -}}
+{{- end -}}
+{{- return $terms -}}

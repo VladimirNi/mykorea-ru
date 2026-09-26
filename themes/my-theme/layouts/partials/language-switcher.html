@@ -1,32 +1,13 @@
-{{- if gt (len .Sites) 1 -}}
-  {{- $page := . -}}
-  <nav class="language-switcher" aria-label="{{ i18n "language" | default "Язык" }}">
-    {{- range $page.Sites -}}
-      {{- $targetSite := . -}}
-      {{- $isCurrent := eq $targetSite.Language.Name $page.Site.Language.Name -}}
-      {{- $targetURL := $targetSite.Home.RelPermalink -}}
-
-      {{- range $page.AllTranslations -}}
-        {{- if eq .Language.Name $targetSite.Language.Name -}}
-          {{- $targetURL = .RelPermalink -}}
-        {{- end -}}
-      {{- end -}}
-
-      <a
-        class="language-link {{ if $isCurrent }}is-current{{ end }}"
-        href="{{ $targetURL }}"
-        lang="{{ $targetSite.Language.Name }}"
-        hreflang="{{ $targetSite.Language.Locale }}"
-        title="{{ $targetSite.Language.Label }}"
-        aria-label="{{ $targetSite.Language.Label }}"
-        {{ if $isCurrent }}aria-current="true"{{ end }}
-      >
-        {{- with $targetSite.Params.flag -}}
-          <img src="{{ . | relURL }}" alt="" width="32" height="22">
-        {{- else -}}
-          <span>{{ upper $targetSite.Language.Name }}</span>
-        {{- end -}}
-      </a>
-    {{- end -}}
-  </nav>
-{{- end -}}
+{{ $page := . }}
+<details class="language-menu">
+  <summary class="bottom-nav-link" aria-label="{{ i18n "language" }}: {{ .Site.Language.Label }}">
+    <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/></svg><span>{{ upper .Site.Language.Name }}</span>
+  </summary>
+  <div class="language-panel"><span class="language-panel-title">{{ i18n "language" }}</span>
+    {{ range hugo.Sites }}
+      {{ $target := .Home.RelPermalink }}{{ $code := .Language.Name }}{{ $current := eq $code $page.Site.Language.Name }}
+      {{ range $page.AllTranslations }}{{ if eq .Language.Name $code }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
+      <a class="language-link{{ if $current }} is-current{{ end }}" href="{{ $target }}" lang="{{ .Language.Locale }}" hreflang="{{ .Language.Locale }}" {{ if $current }}aria-current="true"{{ end }}><span>{{ .Language.Label | default (upper $code) }}</span><small>{{ upper $code }}</small></a>
+    {{ end }}
+  </div>
+</details>
