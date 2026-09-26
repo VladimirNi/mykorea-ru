@@ -1,0 +1,10 @@
+{{ if ne .Site.Params.showAnsanCommunity false }}
+<section class="community-panel" aria-labelledby="community-title">
+  <div class="community-heading"><span class="community-mark" aria-hidden="true">A<span>life</span></span><div><p class="eyebrow">ANSAN LIFE</p><h2 id="community-title">{{ i18n "community_title" }}</h2></div></div>
+  <p class="community-story">{{ i18n "community_story" }}</p>
+  <div class="community-links">
+    <a href="{{ .Site.Params.telegramGroup | default "https://t.me/ansanlife" }}" target="_blank" rel="noopener noreferrer"><span><strong>@ansanlife</strong><small>{{ i18n "community_chat" }}</small></span><span aria-hidden="true">↗</span></a>
+    <a href="{{ .Site.Params.telegramChannel | default "https://t.me/ansan" }}" target="_blank" rel="noopener noreferrer"><span><strong>@ansan</strong><small>{{ i18n "community_channel" }}</small></span><span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+{{ end }}

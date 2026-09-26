@@ -5,7 +5,7 @@ other = "홈"
 [all_posts]
 other = "모든 글"
 [all_posts_short]
-other = "글"
+other = "새 글"
 [categories]
 other = "카테고리"
 [all_categories]
@@ -85,3 +85,40 @@ other = "이전 페이지"
 other = "다음 페이지"
 [of]
 other = "/"
+
+[back]
+other = "뒤로"
+[to_home]
+other = "홈으로"
+[explore_sections]
+other = "주제별 둘러보기"
+[feed_title]
+other = "새 글"
+[feed_description]
+other = "한국 생활에 관한 글을 최신순으로 만나보세요."
+[community_title]
+other = "이제는 고향 같은 도시, 안산"
+[community_story]
+other = "안산에서 산 지 어느덧 10년째입니다. 그동안 안산은 제게 고향 같은 곳이 되었고, 저는 이 도시를 무척 사랑합니다. 그래서 이웃과 소통하고 새로운 친구를 만날 수 있는 공간, Ansan Life를 만들었습니다. 우리 동네의 좋은 쉼터와 가 볼 만한 곳, 행사, 새로운 발견, 생활에 도움이 되는 정보를 함께 나눠요."
+[community_chat]
+other = "안산 이웃과의 대화, 질문, 동네 정보"
+[community_channel]
+other = "운영진이 전하는 소식, 공지, 게시물"
+[chat_short]
+other = "소통방"
+[channel_short]
+other = "소식 채널"
+[telegram_discussion_text]
+other = "텔레그램에서 의견을 나누고 대화에 참여해 보세요."
+[next_article]
+other = "다음 글"
+[load_next]
+other = "다음 글 불러오기"
+[loading_article]
+other = "글을 불러오는 중…"
+[load_error]
+other = "글을 불러오지 못했습니다. 다시 시도하거나 링크로 열어 주세요."
+[article_loaded]
+other = "다음 글이 아래에 추가되었습니다."
+[open_article]
+other = "새 페이지에서 열기"

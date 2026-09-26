@@ -1,4 +1,5 @@
 {{- $src := .Destination -}}
+{{- $first := eq .Ordinal 0 -}}
 {{- $alt := .Text | default .Page.Title -}}
 {{- $title := .Title -}}
 {{- $path := strings.TrimPrefix "/" $src -}}
@@ -15,18 +16,18 @@
       width="{{ $processed.Width }}"
       height="{{ $processed.Height }}"
       alt="{{ $alt }}"
-      loading="lazy"
+      loading="{{ if $first }}eager{{ else }}lazy{{ end }}" {{ if $first }}fetchpriority="high"{{ end }}
       decoding="async"
       {{ with $title }}title="{{ . }}"{{ end }}
     >
   {{- else if $resource -}}
-    <img src="{{ $resource.RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async" {{ with $title }}title="{{ . }}"{{ end }}>
+    <img src="{{ $resource.RelPermalink }}" alt="{{ $alt }}" loading="{{ if $first }}eager{{ else }}lazy{{ end }}" {{ if $first }}fetchpriority="high"{{ end }} decoding="async" {{ with $title }}title="{{ . }}"{{ end }}>
   {{- else -}}
     {{- $finalSrc := $src -}}
     {{- if not (or (strings.HasPrefix $src "https://") (strings.HasPrefix $src "http://")) -}}
       {{- $finalSrc = $src | relURL -}}
     {{- end -}}
-    <img src="{{ $finalSrc | safeURL }}" alt="{{ $alt }}" loading="lazy" decoding="async" {{ with $title }}title="{{ . }}"{{ end }}>
+    <img src="{{ $finalSrc | safeURL }}" alt="{{ $alt }}" loading="{{ if $first }}eager{{ else }}lazy{{ end }}" {{ if $first }}fetchpriority="high"{{ end }} decoding="async" {{ with $title }}title="{{ . }}"{{ end }}>
   {{- end -}}
   {{- with $title -}}<span class="image-caption">{{ . }}</span>{{- end -}}
 </span>

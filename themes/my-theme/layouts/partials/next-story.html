@@ -1,0 +1,8 @@
+{{ $page := . }}{{ with partial "next-article.html" . }}
+<section class="next-story" data-next-story data-next-url="{{ .RelPermalink }}" data-auto="{{ ne $page.Site.Params.autoLoadNext false }}" data-loading="{{ i18n "loading_article" }}" data-error="{{ i18n "load_error" }}" data-loaded="{{ i18n "article_loaded" }}" data-divider="{{ i18n "next_article" }}" data-open="{{ i18n "open_article" }}">
+  <span class="eyebrow">{{ i18n "next_article" }}</span>
+  <a class="next-story-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  <div class="next-story-actions"><button type="button" class="outline-button" data-load-next>{{ i18n "load_next" }}</button><a href="{{ .RelPermalink }}">{{ i18n "open_article" }} ↗</a></div>
+  <p class="load-status" role="status" aria-live="polite"></p>
+</section>
+{{ end }}

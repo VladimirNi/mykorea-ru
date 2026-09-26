@@ -1,0 +1,9 @@
+{{- $page := . -}}{{- $next := false -}}
+{{- $pages := where .Site.RegularPages "Section" .Section -}}
+{{- $pages = where $pages "Layout" "ne" "search" -}}
+{{- $pages = where $pages "Params.exclude_from_home" "ne" true -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+{{- range $index, $candidate := $pages -}}
+  {{- if and (eq $candidate.RelPermalink $page.RelPermalink) (lt (add $index 1) (len $pages)) -}}{{ $next = index $pages (add $index 1) }}{{- end -}}
+{{- end -}}
+{{- return $next -}}

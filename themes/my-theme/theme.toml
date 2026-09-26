@@ -1,7 +1,7 @@
 name = "My Korea Media"
 license = "MIT"
 licenselink = "https://opensource.org/license/mit"
-description = "Мобильная мультиязычная медиа-тема для MyKorea.ru"
+description = "Белая мультиязычная медиа-тема с рубриками, Telegram и подгрузкой статей для MyKorea.ru"
 homepage = "https://www.mykorea.ru/"
 min_version = "0.158.0"
 

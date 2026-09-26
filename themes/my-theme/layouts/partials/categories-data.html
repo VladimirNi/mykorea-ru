@@ -1,0 +1,5 @@
+{{- $hidden := .Params.hiddenCategories | default (slice "Pin") -}}
+{{- $hidden = $hidden | append (.Params.pinCategory | default "Pin") -}}
+{{- $categories := slice -}}
+{{- range .Taxonomies.categories.ByCount -}}{{ if not (in $hidden .Page.LinkTitle) }}{{ $categories = $categories | append .Page }}{{ end }}{{- end -}}
+{{- return $categories -}}

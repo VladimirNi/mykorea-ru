@@ -5,7 +5,7 @@
 {{ $terms := slice }}
 {{ range .Data.Terms.Alphabetical }}{{ if not (and $isCategories (in $hidden .Page.LinkTitle)) }}{{ $terms = $terms | append . }}{{ end }}{{ end }}
 <div class="content-shell taxonomy-shell">
-  <header class="archive-header"><span class="eyebrow">{{ i18n "navigation" }}</span><h1>{{ .Title }}</h1>
+  <header class="archive-header"><h1>{{ partial "page-title.html" . }}</h1>
     <p class="archive-description">{{ if $isCategories }}{{ i18n "categories_description" }}{{ else }}{{ i18n "tags_description" }}{{ end }}</p>
     {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
   </header>

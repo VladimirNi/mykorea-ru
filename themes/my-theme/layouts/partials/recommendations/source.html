@@ -1,0 +1,7 @@
+{{- $records := slice -}}
+{{- range .RegularPages -}}
+  {{- if and (ne .Layout "search") (ne .Params.exclude_from_home true) -}}{{ $records = $records | append (partialCached "recommendations/record.html" . .RelPermalink) }}{{- end -}}
+{{- end -}}
+{{- $path := printf "recommendations/%s/%s.json" .Site.Language.Name (crypto.MD5 .RelPermalink) -}}
+{{- $file := (resources.FromString $path ($records | jsonify)) | fingerprint -}}
+{{- return $file.RelPermalink -}}

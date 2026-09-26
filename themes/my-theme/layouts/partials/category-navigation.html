@@ -1,0 +1,15 @@
+{{ $page := .page }}{{ $compact := .compact | default false }}
+{{ $categories := partialCached "categories-data.html" $page.Site $page.Site.Language.Name }}
+{{ with $categories }}
+<nav class="category-navigation{{ if $compact }} category-navigation--compact{{ end }}" aria-label="{{ i18n "categories" }}">
+  {{ range . }}
+  {{ $category := . }}{{ $owner := . }}{{ $src := .Params.image | default .Params.thumbnail | default "" }}
+  {{ if not $src }}{{ with .Resources.GetMatch "{cover,featured,thumbnail}*" }}{{ $src = .Name }}{{ end }}{{ end }}
+  {{ if not $src }}{{ range first 1 .RegularPages.ByDate.Reverse }}{{ $src = partial "media/thumbnail-source.html" . }}{{ $owner = . }}{{ end }}{{ end }}
+  <a class="category-orbit{{ if eq $page.RelPermalink .RelPermalink }} is-current{{ end }}" href="{{ .RelPermalink }}" {{ if eq $page.RelPermalink .RelPermalink }}aria-current="page"{{ end }}>
+    <span class="category-picture">{{ if $src }}{{ partial "media/image.html" (dict "Page" $owner "Src" $src "Alt" "" "Decorative" true "Class" "category-photo" "Small" "128x128 Center webp q80" "Large" "256x256 Center webp q82" "Sizes" (cond $compact "60px" "(max-width: 600px) 84px, 120px") "Loading" "eager") }}{{ else }}<span class="category-initial" aria-hidden="true">{{ substr .LinkTitle 0 1 }}</span>{{ end }}</span>
+    <span class="category-name">{{ .LinkTitle }}</span>
+  </a>
+  {{ end }}
+</nav>
+{{ end }}

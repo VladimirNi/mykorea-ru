@@ -1,0 +1,8 @@
+{{ $page := . }}
+{{ $tg := .Params.telegram_discussion | default .Params.telegram | default "" }}
+{{ $links := slice }}
+{{ with .Params.vk_discussion }}{{ $links = $links | append (dict "url" . "type" "vk" "name" "ВКонтакте" "text" (i18n "vk_discussion_text")) }}{{ end }}
+{{ with $tg }}{{ $links = $links | append (dict "url" . "type" "telegram" "name" "Telegram" "text" (i18n "telegram_discussion_text")) }}{{ end }}
+{{ with $links }}<div class="discussion-panels">{{ range . }}
+<section class="discussion-panel discussion-panel--{{ .type }}"><span class="discussion-symbol" aria-hidden="true">{{ if eq .type "telegram" }}↗{{ else }}VK{{ end }}</span><div><h2>{{ i18n "discuss_publication" }} · {{ .name }}</h2><p>{{ .text }}</p><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ i18n "go_to_discussion" }} →</a></div></section>
+{{ end }}</div>{{ end }}

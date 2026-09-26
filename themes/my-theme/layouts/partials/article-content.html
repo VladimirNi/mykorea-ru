@@ -1,0 +1,7 @@
+{{- $content := .Content -}}
+{{- range findRE `(?is)<img\b[^>]*>` $content 1 -}}
+  {{- $image := replaceRE `(?i)\s+(loading|fetchpriority)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)` "" . -}}
+  {{- $image = replaceRE `(?i)<img\b` `<img loading="eager" fetchpriority="high"` $image -}}
+  {{- $content = replace $content . $image 1 -}}
+{{- end -}}
+{{- return ($content | safeHTML) -}}

@@ -1,0 +1,14 @@
+{{ $page := . }}{{ $pool := slice }}{{ $sources := slice }}
+{{ range partial "visible-categories.html" . }}
+  {{ $pool = union $pool .RegularPages }}
+  {{ $sources = $sources | append (partialCached "recommendations/source.html" . .RelPermalink) }}
+{{ end }}
+{{ $pool = where $pool "RelPermalink" "ne" .RelPermalink }}
+{{ $pool = where $pool "Layout" "ne" "search" }}
+{{ $pool = where $pool "Params.exclude_from_home" "ne" true }}
+{{ with $pool }}
+<section class="related-section" data-related data-current="{{ $page.RelPermalink }}" data-sources="{{ $sources | jsonify }}">
+  <div class="section-heading"><h2>{{ i18n "related_posts" }}</h2></div>
+  <div class="story-list related-list">{{ range first 6 (shuffle .) }}{{ partial "post-card.html" (dict "page" .) }}{{ end }}</div>
+</section>
+{{ end }}

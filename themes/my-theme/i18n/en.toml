@@ -5,7 +5,7 @@ other = "Home"
 [all_posts]
 other = "All posts"
 [all_posts_short]
-other = "Posts"
+other = "Feed"
 [categories]
 other = "Categories"
 [all_categories]
@@ -86,3 +86,40 @@ other = "Previous page"
 other = "Next page"
 [of]
 other = "of"
+
+[back]
+other = "Back"
+[to_home]
+other = "Home"
+[explore_sections]
+other = "Explore"
+[feed_title]
+other = "Feed"
+[feed_description]
+other = "Stories about life in Korea, from the newest to the earliest."
+[community_title]
+other = "Ansan — the city that became home"
+[community_story]
+other = "I am now in my tenth year of living in Ansan. Over the years, this city has become home, and I love it dearly. That is why I created Ansan Life: a place to meet neighbours and make new friends. Let’s share our favourite places to relax, local events, discoveries and practical tips about life in our city."
+[community_chat]
+other = "Conversations, questions and local discoveries"
+[community_channel]
+other = "Updates, announcements and posts from us"
+[chat_short]
+other = "Community"
+[channel_short]
+other = "Updates"
+[telegram_discussion_text]
+other = "Share your thoughts and join the conversation on Telegram."
+[next_article]
+other = "Next article"
+[load_next]
+other = "Load next article"
+[loading_article]
+other = "Loading the article…"
+[load_error]
+other = "The article could not be loaded. Try again or open it using the link."
+[article_loaded]
+other = "The next article has been added below."
+[open_article]
+other = "Open separately"

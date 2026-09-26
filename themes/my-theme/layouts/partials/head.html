@@ -4,7 +4,7 @@
 {{- $siteTitle := .Site.Title -}}
 {{- $homeTitle := .Site.Params.seoTitle | default $siteTitle -}}
 {{- $titleSeparator := .Site.Params.titleSeparator | default " — " -}}
-{{- $pageTitle := cond .IsHome $homeTitle (printf "%s%s%s" .Title $titleSeparator $siteTitle) -}}
+{{- $pageTitle := cond .IsHome $homeTitle (printf "%s%s%s" (partial "page-title.html" .) $titleSeparator $siteTitle) -}}
 
 {{- $description := .Site.Params.description | default "" -}}
 {{- if not .IsHome -}}
@@ -16,6 +16,7 @@
     {{- $description = .Summary | plainify -}}
   {{- end -}}
 {{- end -}}
+{{- if and (eq .Kind "section") (eq .Section "posts") -}}{{ $description = .Description | default .Site.Params.feedDescription | default (i18n "feed_description") }}{{- end -}}
 {{- $description = $description | plainify | htmlUnescape | strings.TrimSpace -}}
 
 {{- $isSearch := eq .Layout "search" -}}

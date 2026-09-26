@@ -10,4 +10,5 @@ image: ""
 image_caption: ""
 author: "Владимир"
 vk_discussion: ""
+telegram_discussion: ""
 ---

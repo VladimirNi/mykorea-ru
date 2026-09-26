@@ -1,15 +1,28 @@
+# Пример для нового проекта. Не заменяйте им конфигурацию действующего сайта.
 baseURL = "https://example.org/"
 title = "Моя Корея"
 theme = "my-theme"
 defaultContentLanguage = "ru"
 enableRobotsTXT = true
 [taxonomies]
- category = "categories"
- tag = "tags"
+  category = "categories"
+  tag = "tags"
 [params]
- description = "Люди, места и повседневная жизнь в Южной Корее."
- mainSections = ["posts"]
- shortTitle = "Моя Корея"
+  mainSections = ["posts"]
+  autoLoadNext = true
+  showAnsanCommunity = true
 [languages.ru]
- label = "Русский"
- locale = "ru-RU"
+  label = "Русский"
+  locale = "ru-RU"
+  title = "Моя Корея"
+  weight = 1
+[languages.en]
+  label = "English"
+  locale = "en-US"
+  title = "My Korea"
+  weight = 2
+[languages.ko]
+  label = "한국어"
+  locale = "ko-KR"
+  title = "마이코리아"
+  weight = 3

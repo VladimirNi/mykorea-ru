@@ -1,7 +1,5 @@
-<footer class="site-footer">
-  <div class="content-shell footer-inner">
-    <a class="footer-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
-    {{- with .Site.Params.description -}}<p>{{ . }}</p>{{- end -}}
-    <small>© {{ now.Year }} {{ .Site.Params.organizationName | default .Site.Title }}. {{ i18n "all_rights_reserved" | default "Все права защищены." }}</small>
-  </div>
-</footer>
+<footer class="site-footer"><div class="content-shell footer-inner">
+  <a class="footer-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+  {{ if ne .Site.Params.showAnsanCommunity false }}<nav class="footer-social" aria-label="Telegram"><a href="{{ .Site.Params.telegramGroup | default "https://t.me/ansanlife" }}" target="_blank" rel="noopener noreferrer">@ansanlife · {{ i18n "chat_short" }}</a><a href="{{ .Site.Params.telegramChannel | default "https://t.me/ansan" }}" target="_blank" rel="noopener noreferrer">@ansan · {{ i18n "channel_short" }}</a></nav>{{ end }}
+  <small>© {{ now.Year }} {{ .Site.Params.organizationName | default .Site.Title }}</small>
+</div></footer>

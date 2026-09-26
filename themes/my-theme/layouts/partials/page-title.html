@@ -1,0 +1,4 @@
+{{- $title := .Title -}}
+{{- if and (eq .Kind "section") (eq .Section "posts") -}}{{ $title = .Params.feed_title | default .Site.Params.feedTitle | default (i18n "feed_title") }}{{- end -}}
+{{- if eq .Kind "taxonomy" -}}{{ if eq .Data.Plural "categories" }}{{ $title = i18n "categories" }}{{ else if eq .Data.Plural "tags" }}{{ $title = i18n "tags" }}{{ end }}{{- end -}}
+{{- return $title -}}

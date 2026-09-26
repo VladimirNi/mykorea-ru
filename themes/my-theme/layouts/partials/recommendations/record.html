@@ -1,0 +1,12 @@
+{{- $src := partial "media/thumbnail-source.html" . -}}
+{{- $url := "" -}}{{- $srcset := "" -}}
+{{- with $src -}}
+  {{- $path := strings.TrimPrefix "/" . -}}
+  {{- $resource := $.Resources.GetMatch $path -}}{{- if not $resource }}{{ $resource = resources.Get $path }}{{ end -}}
+  {{- if and $resource (in (slice "jpeg" "png" "webp" "tiff" "bmp") $resource.MediaType.SubType) -}}
+    {{- $small := $resource.Fill "480x270 Center webp q80" -}}{{- $large := $resource.Fill "800x450 Center webp q82" -}}
+    {{- $url = $small.RelPermalink -}}{{- $srcset = printf "%s 480w, %s 800w" $small.RelPermalink $large.RelPermalink -}}
+  {{- else if $resource -}}{{- $url = $resource.RelPermalink -}}
+  {{- else -}}{{- $url = . | relURL -}}{{- end -}}
+{{- end -}}
+{{- return (dict "url" .RelPermalink "title" .Title "image" $url "srcset" $srcset "date" (time.Format (.Site.Params.dateFormat | default "02.01.2006") .Date) "datetime" (.Date.Format "2006-01-02") "author" (.Params.author | default .Site.Params.author | default .Site.Title)) -}}
