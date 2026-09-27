@@ -8,5 +8,6 @@
   {{ partial "footer.html" . }}
   {{ partial "bottom-nav.html" . }}
   {{ partialCached "head/js.html" . }}
+  {{ if eq .Layout "office-directory" }}{{ with resources.Get "js/offices.js" | minify | fingerprint }}<script type="module" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>{{ end }}{{ end }}
 </body>
 </html>

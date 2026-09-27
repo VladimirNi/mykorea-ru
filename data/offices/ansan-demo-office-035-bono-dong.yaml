@@ -1,0 +1,118 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan People Job 035 — Понго-дон (ДЕМО)
+  en: Ansan People Job 035 — Bono-dong (DEMO)
+  ko: 안산 피플잡 035 — 본오동 (데모)
+city: ansan
+district: bono-dong
+address: ''
+landmark:
+  ru: Понго-дон
+  en: Bono-dong
+  ko: 본오동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский, корейский
+  en: Russian
+  ko: 러시아어, 한국어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Понго-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Bono-dong. Not a real listing.
+  ko: 본오동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Сборка светильников
+    en: Lighting assembly
+    ko: 조명기구 조립
+  age_min: 20
+  age_max: 50
+  gender: any
+  overtime: 'yes'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Подготовка сырья
+    en: Material preparation
+    ko: 원재료 준비
+  age_min: 20
+  age_max: 50
+  gender: any
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Фасовка напитков
+    en: Beverage packing
+    ko: 음료 포장
+  age_min: null
+  age_max: 45
+  gender: any
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Упаковка масок и салфеток
+    en: Mask and wipes packing
+    ko: 마스크·티슈 포장
+  age_min: null
+  age_max: 55
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'no'
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.

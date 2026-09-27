@@ -122,3 +122,89 @@ other = "글을 불러오지 못했습니다. 다시 시도하거나 링크로 �
 other = "다음 글이 아래에 추가되었습니다."
 [open_article]
 other = "새 페이지에서 열기"
+
+# Job office directory
+[work_nav]
+other = "직업소개소"
+[work_eyebrow]
+other = "일자리 · 안산"
+[work_intro]
+other = "직업소개소 연락처와 근무 조건별 검색."
+[work_filters]
+other = "조건별 검색"
+[work_search]
+other = "검색"
+[work_search_hint]
+other = "이름, 주소, 전화번호"
+[work_city]
+other = "사무실 소재 도시"
+[work_district]
+other = "사무실 소재 동"
+[work_all_cities]
+other = "모든 도시"
+[work_all_districts]
+other = "모든 동"
+[work_age]
+other = "나이"
+[work_age_range]
+other = "연령 조건"
+[work_gender]
+other = "성별"
+[work_male]
+other = "남성"
+[work_female]
+other = "여성"
+[work_gender_any]
+other = "성별 무관"
+[work_any]
+other = "상관없음"
+[work_overtime]
+other = "잔업"
+[work_special_shifts]
+other = "특근"
+[work_daily_pay]
+other = "일당"
+[work_yes]
+other = "있음"
+[work_no]
+other = "없음"
+[work_unknown]
+other = "미확인"
+[work_filter_note]
+other = "선택한 조건이 하나의 근무 형태에서 모두 일치해야 합니다. 미확인은 “없음”을 의미하지 않습니다."
+[work_reset]
+other = "필터 초기화"
+[work_nojs]
+other = "아래에 모든 직업소개소가 표시됩니다. 필터를 사용하려면 브라우저에서 JavaScript를 켜 주세요."
+[work_offices]
+other = "직업소개소"
+[work_found]
+other = "검색 결과:"
+[work_no_matches]
+other = "일치하는 소개소가 없습니다"
+[work_try_reset]
+other = "조건을 변경하거나 필터를 초기화해 주세요."
+[work_empty]
+other = "소개소 정보를 준비 중입니다"
+[work_empty_note]
+other = "직업소개소 연락처와 근무 조건이 곧 등록됩니다."
+[work_confirm]
+other = "방문 전 소개소에 최신 조건을 확인해 주세요. 일당은 하루 기준 임금이며, 실제 지급일은 확인된 경우 별도로 표시합니다."
+[work_languages]
+other = "상담 언어"
+[work_map]
+other = "지도"
+[work_conditions]
+other = "근무 조건 보기"
+[work_conditions_unknown]
+other = "근무 조건이 아직 확인되지 않았습니다."
+[work_updated]
+other = "확인일"
+[work_from]
+other = "최소"
+[work_up_to]
+other = "최대"
+[work_workplace]
+other = "근무지"
+[work_pay_note]
+other = "급여 및 지급일"

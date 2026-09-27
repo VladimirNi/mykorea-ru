@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Work Link 051 — Коджан-дон (ДЕМО)
+  en: Ansan Work Link 051 — Gojan-dong (DEMO)
+  ko: 안산 워크링크 051 — 고잔동 (데모)
+city: ansan
+district: gojan-dong
+address: ''
+landmark:
+  ru: Коджан-дон
+  en: Gojan-dong
+  ko: 고잔동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Russian, Korean
+  ko: 확인 필요
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Коджан-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Gojan-dong. Not a real listing.
+  ko: 고잔동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Контроль размеров штангенциркулем
+    en: Caliper dimensional inspection
+    ko: 버니어캘리퍼스 치수검사
+  age_min: null
+  age_max: 50
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'no'
+  daily_pay: unknown
+  workplace:
+    ru: Ансан Smart Hub
+    en: Ansan Smart Hub
+    ko: 안산스마트허브
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Комплектация запчастей
+    en: Spare-parts picking
+    ko: 부품 피킹
+  age_min: 18
+  age_max: null
+  gender: male
+  overtime: 'no'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Упаковка бытовой химии
+    en: Household chemicals packing
+    ko: 생활용품 포장
+  age_min: null
+  age_max: 60
+  gender: any
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.

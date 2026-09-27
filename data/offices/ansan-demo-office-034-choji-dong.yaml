@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Work Mate Ansan 034 — Чходжи-дон (ДЕМО)
+  en: Work Mate Ansan 034 — Choji-dong (DEMO)
+  ko: 안산 워크메이트 034 — 초지동 (데모)
+city: ansan
+district: choji-dong
+address: ''
+landmark:
+  ru: Чходжи-дон
+  en: Choji-dong
+  ko: 초지동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский, корейский
+  en: Russian, Korean
+  ko: 확인 필요
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Чходжи-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Choji-dong. Not a real listing.
+  ko: 초지동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Сборка автокомпонентов
+    en: Auto-parts assembly
+    ko: 자동차부품 조립
+  age_min: null
+  age_max: 55
+  gender: any
+  overtime: 'no'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Ансан Smart Hub
+    en: Ansan Smart Hub
+    ko: 안산스마트허브
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Упаковка морепродуктов
+    en: Seafood packing
+    ko: 수산물 포장
+  age_min: null
+  age_max: null
+  gender: male
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: unknown
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Оплата по условиям работодателя; дата выплаты не указана.
+    en: Employer terms; payday not specified.
+    ko: 회사 규정에 따름, 급여일 미기재.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Покраска деталей
+    en: Parts painting
+    ko: 부품 도장
+  age_min: 25
+  age_max: 45
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'no'
+  daily_pay: 'yes'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.

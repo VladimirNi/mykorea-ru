@@ -167,11 +167,16 @@ function initialize(root) {
 }
 initialize(document);
 
-document.querySelector('[data-back]')?.addEventListener('click', event => {
-  try {
-    if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { event.preventDefault(); history.back(); }
-  } catch { /* The href remains a working home fallback. */ }
-});
+const backButton = document.querySelector('[data-back]');
+if (backButton) {
+  const updateBack = () => {
+    backButton.hidden = false;
+    backButton.disabled = history.length <= 1;
+  };
+  updateBack();
+  addEventListener('pageshow', updateBack);
+  backButton.addEventListener('click', () => history.back());
+}
 const languages = document.querySelector('.language-menu');
 if (languages) {
   document.addEventListener('click', event => { if (!languages.contains(event.target)) languages.open = false; });

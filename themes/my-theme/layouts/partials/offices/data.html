@@ -1,0 +1,27 @@
+{{- $records := slice -}}
+{{- $cities := hugo.Data.work.locations.cities | default slice -}}
+{{- range $id, $office := hugo.Data.offices -}}
+  {{- if eq $office.active true -}}
+    {{- if not $office.name }}{{ errorf "data/offices/%s: name is required" $id }}{{ end -}}
+    {{- $city := dict -}}{{- $district := dict -}}
+    {{- range $cities -}}{{ if eq .id $office.city }}{{ $city = . }}{{ range .districts }}{{ if eq .id $office.district }}{{ $district = . }}{{ end }}{{ end }}{{ end }}{{- end -}}
+    {{- if not $city }}{{ errorf "data/offices/%s: unknown city %q; see data/work/locations.yaml" $id $office.city }}{{ end -}}
+    {{- if and $office.district (not $district) }}{{ errorf "data/offices/%s: unknown district %q in city %q" $id $office.district $office.city }}{{ end -}}
+    {{- $profiles := slice -}}
+    {{- range $n, $profile := $office.profiles -}}
+      {{- $gender := $profile.gender | default "unknown" -}}
+      {{- if not (in (slice "any" "male" "female" "unknown") $gender) }}{{ errorf "data/offices/%s profiles[%d]: gender must be any/male/female/unknown" $id $n }}{{ end -}}
+      {{- $conditions := dict -}}
+      {{- range slice "overtime" "special_shifts" "daily_pay" -}}
+        {{- $value := "unknown" -}}{{- if isset $profile . }}{{ $value = index $profile . }}{{ end -}}
+        {{- if not (in (slice "yes" "no" "unknown") $value) }}{{ errorf "data/offices/%s profiles[%d]: %s must be a quoted string yes/no/unknown" $id $n . }}{{ end -}}
+        {{- $conditions = merge $conditions (dict . $value) -}}
+      {{- end -}}
+      {{- range slice "age_min" "age_max" -}}{{ with index $profile . }}{{ if or (lt (int .) 1) (gt (int .) 120) (ne (float .) (float (int .))) }}{{ errorf "data/offices/%s profiles[%d]: invalid age" $id $n }}{{ end }}{{ end }}{{- end -}}
+      {{- if and $profile.age_min $profile.age_max }}{{ if gt (int $profile.age_min) (int $profile.age_max) }}{{ errorf "data/offices/%s profiles[%d]: age_min exceeds age_max" $id $n }}{{ end }}{{- end -}}
+      {{- $profiles = $profiles | append (merge $conditions (dict "gender" $gender "age_min" ($profile.age_min | default 0) "age_max" ($profile.age_max | default 0) "raw" $profile)) -}}
+    {{- end -}}
+    {{- $records = $records | append (dict "id" $id "raw" $office "city" $city "district" $district "profiles" $profiles "name" (partial "offices/text.html" (dict "value" $office.name "lang" $.Site.Language.Lang))) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (sort $records "name") -}}

@@ -1,0 +1,57 @@
+# ШАБЛОН. Не публикуется, пока active: false.
+# Скопируйте в отдельный файл: например, data/offices/office-name.yaml.
+# После заполнения реальными данными поставьте active: true.
+active: true
+name:
+  ru: "Название самущиля"
+  en: "Office name"
+  ko: "직업소개소 이름"
+city: "ansan"
+district: "wongok-dong" # ID из data/work/locations.yaml; можно оставить ""
+address: "" # Полный адрес по-корейски
+landmark:
+  ru: ""
+  en: ""
+  ko: ""
+# Изображение положите в static/images/offices/, здесь путь от корня сайта.
+photo: "" # Например: /images/offices/office-name.webp
+phone: "" # Например, номер в международном формате с +82; не пишите выдуманные номера
+telegram: "" # Полная ссылка https://t.me/...
+kakao: "" # Полная ссылка https://open.kakao.com/o/...
+map_url: "" # Необязательная ссылка на карту, без встраивания карты
+languages:
+  ru: ""
+  en: ""
+  ko: ""
+description:
+  ru: ""
+  en: ""
+  ko: ""
+updated: "" # Дата реальной проверки: YYYY-MM-DD
+profiles:
+  - title:
+      ru: "Название варианта работы"
+      en: "Work option"
+      ko: "근무 형태"
+    # Пустое значение (null) — граница не указана. Обе пустые — возраст неизвестен.
+    # Одна заданная граница означает открытый диапазон: от N или до N.
+    age_min: null
+    age_max: null
+    gender: "any" # "male", "female", "any" (любой пол), "unknown"
+    # Обязательно пишите yes/no/unknown В КАВЫЧКАХ.
+    overtime: "unknown" # Чонобы / 잔업
+    special_shifts: "unknown" # Тыкыны / 특근
+    daily_pay: "unknown" # Ильтан / 일당: дневная ставка, не обещание выплаты день в день
+    workplace: # Где находится сама работа, не адрес самущиля
+      ru: ""
+      en: ""
+      ko: ""
+    pay_note: # Ставка и день фактической выплаты, если известно
+      ru: ""
+      en: ""
+      ko: ""
+    note:
+      ru: ""
+      en: ""
+      ko: ""
+  # Добавляйте другие варианты отдельными элементами списка (начинаются с - title:).

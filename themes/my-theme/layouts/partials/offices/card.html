@@ -1,0 +1,43 @@
+{{ $o := .office }}{{ $raw := $o.raw }}{{ $lang := .page.Site.Language.Lang }}
+{{ $city := partial "offices/text.html" (dict "value" $o.city.name "lang" $lang) }}
+{{ $district := partial "offices/text.html" (dict "value" $o.district.name "lang" $lang) }}
+{{ $search := printf "%s %s %s %s %s %s" $o.name $city $district ($raw.address | default "") ($raw.phone | default "") (partial "offices/text.html" (dict "value" $raw.languages "lang" $lang)) }}
+{{ $filterProfiles := slice }}{{ range $o.profiles }}{{ $filterProfiles = $filterProfiles | append (dict "age_min" .age_min "age_max" .age_max "gender" .gender "overtime" .overtime "special_shifts" .special_shifts "daily_pay" .daily_pay) }}{{ end }}
+<article class="office-card" id="office-{{ $o.id | urlize }}" data-office data-city="{{ $raw.city }}" data-district="{{ $raw.district }}" data-search="{{ $search }}" data-profiles="{{ $filterProfiles | jsonify }}">
+  <div class="office-body">
+    <div class="office-identity"><div>
+    <p class="office-location">{{ $city }}{{ with $district }} · {{ . }}{{ end }}</p>
+    <h3><a href="#office-{{ $o.id | urlize }}">{{ $o.name }}</a></h3>
+    </div>{{ with $raw.photo }}<img class="office-photo" src="{{ . | relURL }}" alt="{{ $o.name }}" width="96" height="96" loading="lazy" decoding="async">{{ end }}</div>
+    {{ with $raw.address }}<p class="office-address" lang="ko">{{ . }}</p>{{ end }}
+    {{ with partial "offices/text.html" (dict "value" $raw.landmark "lang" $lang) }}<p class="office-muted">{{ . }}</p>{{ end }}
+    {{ with partial "offices/text.html" (dict "value" $raw.description "lang" $lang) }}<p>{{ . }}</p>{{ end }}
+    {{ with partial "offices/text.html" (dict "value" $raw.languages "lang" $lang) }}<p class="office-muted">{{ i18n "work_languages" }}: {{ . }}</p>{{ end }}
+    <div class="office-contacts">
+      {{ with $raw.phone }}<a class="outline-button" href="tel:{{ replaceRE `[^+0-9]` "" . }}">{{ . }}</a>{{ end }}
+      {{ with $raw.telegram }}<a class="outline-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">Telegram ↗</a>{{ end }}
+      {{ with $raw.kakao }}<a class="outline-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">KakaoTalk ↗</a>{{ end }}
+      {{ with $raw.map_url }}<a class="outline-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ i18n "work_map" }} ↗</a>{{ end }}
+    </div>
+    {{ if $o.profiles }}
+    <details class="office-conditions"><summary>{{ i18n "work_conditions" }} <span>(<span data-profile-count>{{ len $o.profiles }}</span>)</span></summary>
+      <ul class="office-profiles">
+        {{ range $o.profiles }}
+        <li class="office-profile" data-profile>
+          {{ with partial "offices/text.html" (dict "value" .raw.title "lang" $lang) }}<h4>{{ . }}</h4>{{ end }}
+          <dl>
+            <div><dt>{{ i18n "work_age_range" }}</dt><dd>{{ if and .age_min .age_max }}{{ .age_min }}–{{ .age_max }}{{ else if .age_min }}{{ i18n "work_from" }} {{ .age_min }}{{ else if .age_max }}{{ i18n "work_up_to" }} {{ .age_max }}{{ else }}{{ i18n "work_unknown" }}{{ end }}</dd></div>
+            <div><dt>{{ i18n "work_gender" }}</dt><dd>{{ if eq .gender "any" }}{{ i18n "work_gender_any" }}{{ else }}{{ i18n (printf "work_%s" .gender) }}{{ end }}</dd></div>
+            {{ $profile := . }}{{ range $key := slice "overtime" "special_shifts" "daily_pay" }}<div><dt>{{ i18n (printf "work_%s" $key) }}</dt><dd data-condition="{{ index $profile $key }}">{{ i18n (printf "work_%s" (index $profile $key)) }}</dd></div>{{ end }}
+          </dl>
+          {{ with partial "offices/text.html" (dict "value" .raw.workplace "lang" $lang) }}<p>{{ i18n "work_workplace" }}: {{ . }}</p>{{ end }}
+          {{ with partial "offices/text.html" (dict "value" .raw.pay_note "lang" $lang) }}<p>{{ i18n "work_pay_note" }}: {{ . }}</p>{{ end }}
+          {{ with partial "offices/text.html" (dict "value" .raw.note "lang" $lang) }}<p>{{ . }}</p>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </details>
+    {{ else }}<p class="office-muted">{{ i18n "work_conditions_unknown" }}</p>{{ end }}
+    <div class="office-updated">{{ i18n "work_updated" }}: {{ with $raw.updated }}<time datetime="{{ . }}">{{ . }}</time>{{ else }}{{ i18n "work_unknown" }}{{ end }}</div>
+  </div>
+</article>

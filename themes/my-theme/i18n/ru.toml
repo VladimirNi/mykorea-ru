@@ -125,3 +125,89 @@ other = "Не удалось загрузить статью. Попробуйт
 other = "Следующая статья загружена ниже."
 [open_article]
 other = "Открыть отдельно"
+
+# Job office directory
+[work_nav]
+other = "Самущили"
+[work_eyebrow]
+other = "РАБОТА · АНСАН"
+[work_intro]
+other = "Контакты самущилей и подбор по условиям работы."
+[work_filters]
+other = "Подобрать по условиям"
+[work_search]
+other = "Поиск"
+[work_search_hint]
+other = "Название, адрес, телефон"
+[work_city]
+other = "Город офиса"
+[work_district]
+other = "Район офиса"
+[work_all_cities]
+other = "Все города"
+[work_all_districts]
+other = "Все районы"
+[work_age]
+other = "Ваш возраст"
+[work_age_range]
+other = "Возраст"
+[work_gender]
+other = "Пол"
+[work_male]
+other = "Мужчины"
+[work_female]
+other = "Женщины"
+[work_gender_any]
+other = "Любой пол"
+[work_any]
+other = "Неважно"
+[work_overtime]
+other = "Чонобы · 잔업"
+[work_special_shifts]
+other = "Тыкыны · 특근"
+[work_daily_pay]
+other = "Ильтан · 일당"
+[work_yes]
+other = "Есть"
+[work_no]
+other = "Нет"
+[work_unknown]
+other = "Не уточнено"
+[work_filter_note]
+other = "Все выбранные условия должны совпадать в одном варианте работы. Неуточнённые сведения не считаются ответом «Нет»."
+[work_reset]
+other = "Сбросить фильтры"
+[work_nojs]
+other = "Ниже показаны все самущили. Для фильтрации включите JavaScript в браузере."
+[work_offices]
+other = "Самущили"
+[work_found]
+other = "Найдено:"
+[work_no_matches]
+other = "Совпадений пока нет"
+[work_try_reset]
+other = "Измените условия или сбросьте фильтры."
+[work_empty]
+other = "Каталог пополняется"
+[work_empty_note]
+other = "Скоро здесь появятся контакты самущилей и условия работы."
+[work_confirm]
+other = "Условия могут меняться: уточните их в самущиле перед поездкой. Ильтан означает дневную ставку; фактический день выплаты указан отдельно, если он известен."
+[work_languages]
+other = "Языки общения"
+[work_map]
+other = "На карте"
+[work_conditions]
+other = "Варианты работы"
+[work_conditions_unknown]
+other = "Условия работы пока не уточнены."
+[work_updated]
+other = "Проверено"
+[work_from]
+other = "От"
+[work_up_to]
+other = "До"
+[work_workplace]
+other = "Место работы"
+[work_pay_note]
+other = "Оплата и день выплаты"

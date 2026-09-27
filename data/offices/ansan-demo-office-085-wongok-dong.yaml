@@ -1,0 +1,118 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan People Job 085 — Вонгок-дон (ДЕМО)
+  en: Ansan People Job 085 — Wongok-dong (DEMO)
+  ko: 안산 피플잡 085 — 원곡동 (데모)
+city: ansan
+district: wongok-dong
+address: ''
+landmark:
+  ru: Вонгок-дон
+  en: Wongok-dong
+  ko: 원곡동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Confirm
+  ko: 러시아어, 한국어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Вонгок-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Wongok-dong. Not a real listing.
+  ko: 원곡동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Контроль качества автодеталей
+    en: Auto-parts quality control
+    ko: 자동차부품 품질검사
+  age_min: null
+  age_max: 35
+  gender: male
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Визуальный контроль деталей
+    en: Visual parts inspection
+    ko: 부품 외관검사
+  age_min: 18
+  age_max: null
+  gender: any
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Инвентаризация склада
+    en: Warehouse inventory
+    ko: 재고조사
+  age_min: null
+  age_max: 40
+  gender: male
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Оплата по условиям работодателя; дата выплаты не указана.
+    en: Employer terms; payday not specified.
+    ko: 회사 규정에 따름, 급여일 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Сортировка овощей
+    en: Vegetable sorting
+    ko: 채소 선별
+  age_min: 25
+  age_max: 50
+  gender: any
+  overtime: unknown
+  special_shifts: 'no'
+  daily_pay: 'yes'
+  workplace:
+    ru: Ансан Smart Hub
+    en: Ansan Smart Hub
+    ko: 안산스마트허브
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.

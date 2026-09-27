@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Work Hub 039 — Коджан-дон (ДЕМО)
+  en: Ansan Work Hub 039 — Gojan-dong (DEMO)
+  ko: 안산 워크허브 039 — 고잔동 (데모)
+city: ansan
+district: gojan-dong
+address: ''
+landmark:
+  ru: Коджан-дон
+  en: Gojan-dong
+  ko: 고잔동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Russian
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Коджан-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Gojan-dong. Not a real listing.
+  ko: 고잔동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Упаковка замороженных продуктов
+    en: Frozen food packing
+    ko: 냉동식품 포장
+  age_min: 30
+  age_max: 55
+  gender: female
+  overtime: 'yes'
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Уборка производственных помещений
+    en: Factory cleaning
+    ko: 공장 청소
+  age_min: 40
+  age_max: 60
+  gender: female
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: unknown
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Подготовка сырья
+    en: Material preparation
+    ko: 원재료 준비
+  age_min: 25
+  age_max: 45
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.

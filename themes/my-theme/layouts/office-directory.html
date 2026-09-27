@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{ $lang := .Site.Language.Lang }}
+{{ $records := partial "offices/data.html" . }}
+{{ $cities := hugo.Data.work.locations.cities | default slice }}
+<div class="content-shell work-directory" data-office-directory>
+  <header class="work-heading"><p class="eyebrow">{{ i18n "work_eyebrow" }}</p><h1>{{ .Title }}</h1><p>{{ .Description }}</p></header>
+  {{ with .Content }}<div class="work-description post-content">{{ . }}</div>{{ end }}
+  <details class="work-filters" data-filters hidden open>
+    <summary>{{ i18n "work_filters" }}<span aria-hidden="true">⌄</span></summary>
+    <form class="work-filter-form" role="search" aria-label="{{ i18n "work_filters" }}">
+      <div class="work-filter-grid">
+        <label class="work-search">{{ i18n "work_search" }}<input name="q" type="search" maxlength="100" placeholder="{{ i18n "work_search_hint" }}" autocomplete="off"></label>
+        <label>{{ i18n "work_city" }}<select name="city"><option value="">{{ i18n "work_all_cities" }}</option>{{ range $cities }}<option value="{{ .id }}">{{ partial "offices/text.html" (dict "value" .name "lang" $lang) }}</option>{{ end }}</select></label>
+        <label>{{ i18n "work_district" }}<select name="district"><option value="">{{ i18n "work_all_districts" }}</option>{{ range $cities }}{{ $city := .id }}{{ range .districts }}<option value="{{ .id }}" data-city="{{ $city }}">{{ partial "offices/text.html" (dict "value" .name "lang" $lang) }}</option>{{ end }}{{ end }}</select></label>
+        <label>{{ i18n "work_age" }}<input type="number" name="age" min="1" max="120" step="1" inputmode="numeric" placeholder="{{ i18n "work_any" }}"></label>
+        <label>{{ i18n "work_gender" }}<select name="gender"><option value="">{{ i18n "work_any" }}</option><option value="male">{{ i18n "work_male" }}</option><option value="female">{{ i18n "work_female" }}</option><option value="any">{{ i18n "work_gender_any" }}</option></select></label>
+        {{ range slice "overtime" "special_shifts" "daily_pay" }}
+        <label>{{ i18n (printf "work_%s" .) }}<select name="{{ . }}"><option value="">{{ i18n "work_any" }}</option><option value="yes">{{ i18n "work_yes" }}</option><option value="no">{{ i18n "work_no" }}</option></select></label>
+        {{ end }}
+      </div>
+      <div class="work-filter-footer"><p>{{ i18n "work_filter_note" }}</p><button type="reset" class="outline-button">{{ i18n "work_reset" }}</button></div>
+    </form>
+  </details>
+  <noscript><p class="work-note">{{ i18n "work_nojs" }}</p></noscript>
+  <div class="work-result-heading"><h2>{{ i18n "work_offices" }}</h2><p role="status" aria-live="polite" aria-atomic="true">{{ i18n "work_found" }} <strong data-result-count>{{ len $records }}</strong></p></div>
+  <div class="office-grid">
+    {{ range $records }}{{ partial "offices/card.html" (dict "office" . "page" $) }}{{ end }}
+  </div>
+  <div class="work-empty" data-empty {{ if $records }}hidden{{ end }}><h2>{{ if $records }}{{ i18n "work_no_matches" }}{{ else }}{{ i18n "work_empty" }}{{ end }}</h2><p>{{ if $records }}{{ i18n "work_try_reset" }}{{ else }}{{ i18n "work_empty_note" }}{{ end }}</p></div>
+  <p class="work-note">{{ i18n "work_confirm" }}</p>
+</div>
+{{ end }}

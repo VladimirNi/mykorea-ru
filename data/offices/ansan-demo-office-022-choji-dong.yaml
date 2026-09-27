@@ -1,0 +1,118 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Job Bridge Ansan 022 — Чходжи-дон (ДЕМО)
+  en: Job Bridge Ansan 022 — Choji-dong (DEMO)
+  ko: 안산 잡브릿지 022 — 초지동 (데모)
+city: ansan
+district: choji-dong
+address: ''
+landmark:
+  ru: Чходжи-дон
+  en: Choji-dong
+  ko: 초지동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Уточнить
+  en: Russian
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Чходжи-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Choji-dong. Not a real listing.
+  ko: 초지동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Сортировка на складе
+    en: Warehouse sorting
+    ko: 물류창고 분류
+  age_min: 30
+  age_max: null
+  gender: male
+  overtime: unknown
+  special_shifts: 'no'
+  daily_pay: 'no'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Не содержит реальных контактов работодателя.
+    en: Contains no real employer contact details.
+    ko: 실제 업체 연락처가 포함되지 않음.
+- title:
+    ru: Фасовка напитков
+    en: Beverage packing
+    ko: 음료 포장
+  age_min: 35
+  age_max: 55
+  gender: any
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: 'Работа на ЧПУ: помощник'
+    en: CNC helper
+    ko: CNC 보조
+  age_min: null
+  age_max: null
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'no'
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Мойка производственной тары
+    en: Industrial container washing
+    ko: 생산용기 세척
+  age_min: 40
+  age_max: 60
+  gender: any
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Не содержит реальных контактов работодателя.
+    en: Contains no real employer contact details.
+    ko: 실제 업체 연락처가 포함되지 않음.

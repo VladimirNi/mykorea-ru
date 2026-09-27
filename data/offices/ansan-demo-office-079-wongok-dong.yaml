@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Work Hub 079 — Вонгок-дон (ДЕМО)
+  en: Ansan Work Hub 079 — Wongok-dong (DEMO)
+  ko: 안산 워크허브 079 — 원곡동 (데모)
+city: ansan
+district: wongok-dong
+address: ''
+landmark:
+  ru: Вонгок-дон
+  en: Wongok-dong
+  ko: 원곡동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Russian, Korean
+  ko: 확인 필요
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Вонгок-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Wongok-dong. Not a real listing.
+  ko: 원곡동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Контроль качества пластиковых деталей
+    en: Plastic-parts quality control
+    ko: 플라스틱 부품 품질검사
+  age_min: null
+  age_max: 55
+  gender: any
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Погрузка/разгрузка
+    en: Loading and unloading
+    ko: 상하차
+  age_min: 25
+  age_max: 45
+  gender: male
+  overtime: 'yes'
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Сборка пластиковых корпусов
+    en: Plastic housing assembly
+    ko: 플라스틱 케이스 조립
+  age_min: 30
+  age_max: 55
+  gender: female
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.

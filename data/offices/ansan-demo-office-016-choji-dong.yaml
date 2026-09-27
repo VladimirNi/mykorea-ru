@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Smart Job Ansan 016 — Чходжи-дон (ДЕМО)
+  en: Smart Job Ansan 016 — Choji-dong (DEMO)
+  ko: 안산 스마트잡 016 — 초지동 (데모)
+city: ansan
+district: choji-dong
+address: ''
+landmark:
+  ru: Чходжи-дон
+  en: Choji-dong
+  ko: 초지동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский, корейский
+  en: Russian
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Чходжи-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Choji-dong. Not a real listing.
+  ko: 초지동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Маркировка и наклейка стикеров
+    en: Labeling and sticker work
+    ko: 라벨 부착
+  age_min: null
+  age_max: null
+  gender: any
+  overtime: 'yes'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Проверка радиаторных решёток на царапины
+    en: Radiator grille scratch inspection
+    ko: 라디에이터 그릴 외관검사
+  age_min: 18
+  age_max: null
+  gender: any
+  overtime: 'no'
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Проверка штрихкодов
+    en: Barcode inspection
+    ko: 바코드 검사
+  age_min: null
+  age_max: 35
+  gender: female
+  overtime: 'no'
+  special_shifts: 'no'
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ставка и бонусы не указаны.
+    en: Rate and bonuses not specified.
+    ko: 급여 및 수당 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.

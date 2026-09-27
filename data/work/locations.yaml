@@ -1,0 +1,48 @@
+# Районы для навигации, не полный административный справочник. Можно дополнять.
+cities:
+- id: ansan
+  name:
+    ru: Ансан
+    en: Ansan
+    ko: 안산시
+  districts:
+  - id: wongok-dong
+    name:
+      ru: Вонгок-дон
+      en: Wongok-dong
+      ko: 원곡동
+  - id: baegun-dong
+    name:
+      ru: Пэгун-дон
+      en: Baegun-dong
+      ko: 백운동
+  - id: choji-dong
+    name:
+      ru: Чходжи-дон
+      en: Choji-dong
+      ko: 초지동
+  - id: gojan-dong
+    name:
+      ru: Коджан-дон
+      en: Gojan-dong
+      ko: 고잔동
+  - id: jungang-dong
+    name:
+      ru: Чунан-дон
+      en: Jungang-dong
+      ko: 중앙동
+  - id: seonbu-dong
+    name:
+      ru: Сонбу-дон
+      en: Seonbu-dong
+      ko: 선부동
+  - id: bono-dong
+    name:
+      ru: Поно-дон
+      en: Bono-dong
+      ko: 본오동
+  - id: il-dong
+    name:
+      ru: Иль-дон
+      en: Il-dong
+      ko: 일동

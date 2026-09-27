@@ -123,3 +123,89 @@ other = "The article could not be loaded. Try again or open it using the link."
 other = "The next article has been added below."
 [open_article]
 other = "Open separately"
+
+# Job office directory
+[work_nav]
+other = "Job offices"
+[work_eyebrow]
+other = "WORK · ANSAN"
+[work_intro]
+other = "Office contacts and filters for working conditions."
+[work_filters]
+other = "Filter by conditions"
+[work_search]
+other = "Search"
+[work_search_hint]
+other = "Name, address, phone"
+[work_city]
+other = "Office city"
+[work_district]
+other = "Office district"
+[work_all_cities]
+other = "All cities"
+[work_all_districts]
+other = "All districts"
+[work_age]
+other = "Your age"
+[work_age_range]
+other = "Age range"
+[work_gender]
+other = "Gender"
+[work_male]
+other = "Men"
+[work_female]
+other = "Women"
+[work_gender_any]
+other = "Any gender"
+[work_any]
+other = "Any"
+[work_overtime]
+other = "Overtime · 잔업"
+[work_special_shifts]
+other = "Extra shifts · 특근"
+[work_daily_pay]
+other = "Daily-rate work · 일당"
+[work_yes]
+other = "Yes"
+[work_no]
+other = "No"
+[work_unknown]
+other = "Not specified"
+[work_filter_note]
+other = "All selected conditions must match one work option. Unspecified information does not mean “No”."
+[work_reset]
+other = "Reset filters"
+[work_nojs]
+other = "All offices are shown below. Enable JavaScript in your browser to use filters."
+[work_offices]
+other = "Job offices"
+[work_found]
+other = "Found:"
+[work_no_matches]
+other = "No matching offices"
+[work_try_reset]
+other = "Change your conditions or reset the filters."
+[work_empty]
+other = "The directory is being prepared"
+[work_empty_note]
+other = "Office contacts and work conditions will appear here soon."
+[work_confirm]
+other = "Conditions may change; check with the office before visiting. Daily-rate work describes the pay basis; the actual payment schedule is listed separately when known."
+[work_languages]
+other = "Languages spoken"
+[work_map]
+other = "Map"
+[work_conditions]
+other = "Work options"
+[work_conditions_unknown]
+other = "Work conditions have not been confirmed yet."
+[work_updated]
+other = "Last verified"
+[work_from]
+other = "From"
+[work_up_to]
+other = "Up to"
+[work_workplace]
+other = "Workplace"
+[work_pay_note]
+other = "Pay and payment schedule"

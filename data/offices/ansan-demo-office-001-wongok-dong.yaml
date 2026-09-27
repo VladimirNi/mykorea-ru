@@ -1,0 +1,96 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Work Link 001 — Вонгок-дон (ДЕМО)
+  en: Ansan Work Link 001 — Wongok-dong (DEMO)
+  ko: 안산 워크링크 001 — 원곡동 (데모)
+city: ansan
+district: wongok-dong
+address: ''
+landmark:
+  ru: Вонгок-дон
+  en: Wongok-dong
+  ko: 원곡동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Уточнить
+  en: Russian, Korean
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Вонгок-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Wongok-dong. Not a real listing.
+  ko: 원곡동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Мойка производственной тары
+    en: Industrial container washing
+    ko: 생산용기 세척
+  age_min: 30
+  age_max: 55
+  gender: female
+  overtime: 'yes'
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Фасовка напитков
+    en: Beverage packing
+    ko: 음료 포장
+  age_min: 18
+  age_max: null
+  gender: any
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Ансан Smart Hub
+    en: Ansan Smart Hub
+    ko: 안산스마트허브
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Упаковка масок и салфеток
+    en: Mask and wipes packing
+    ko: 마스크·티슈 포장
+  age_min: 30
+  age_max: 50
+  gender: any
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: unknown
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Оплата по условиям работодателя; дата выплаты не указана.
+    en: Employer terms; payday not specified.
+    ko: 회사 규정에 따름, 급여일 미기재.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.

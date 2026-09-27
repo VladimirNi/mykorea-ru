@@ -1,0 +1,118 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan People Job 075 — Коджан-дон (ДЕМО)
+  en: Ansan People Job 075 — Gojan-dong (DEMO)
+  ko: 안산 피플잡 075 — 고잔동 (데모)
+city: ansan
+district: gojan-dong
+address: ''
+landmark:
+  ru: Коджан-дон
+  en: Gojan-dong
+  ko: 고잔동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский, корейский
+  en: Confirm
+  ko: 확인 필요
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Коджан-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Gojan-dong. Not a real listing.
+  ko: 고잔동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Инвентаризация склада
+    en: Warehouse inventory
+    ko: 재고조사
+  age_min: 18
+  age_max: null
+  gender: male
+  overtime: 'no'
+  special_shifts: 'no'
+  daily_pay: unknown
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.
+- title:
+    ru: Сортировка на складе
+    en: Warehouse sorting
+    ko: 물류창고 분류
+  age_min: 20
+  age_max: 50
+  gender: any
+  overtime: 'yes'
+  special_shifts: 'yes'
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Упаковка косметики
+    en: Cosmetics packing
+    ko: 화장품 포장
+  age_min: 35
+  age_max: 55
+  gender: any
+  overtime: unknown
+  special_shifts: 'no'
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Не содержит реальных контактов работодателя.
+    en: Contains no real employer contact details.
+    ko: 실제 업체 연락처가 포함되지 않음.
+- title:
+    ru: Упаковка продуктов
+    en: Food packing
+    ko: 식품 포장
+  age_min: 25
+  age_max: 45
+  gender: any
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.

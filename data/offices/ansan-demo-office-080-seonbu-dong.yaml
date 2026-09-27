@@ -1,0 +1,118 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: People Link Ansan 080 — Сонбу-дон (ДЕМО)
+  en: People Link Ansan 080 — Seonbu-dong (DEMO)
+  ko: 안산 피플링크 080 — 선부동 (데모)
+city: ansan
+district: seonbu-dong
+address: ''
+landmark:
+  ru: Сонбу-дон
+  en: Seonbu-dong
+  ko: 선부동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Уточнить
+  en: Russian, Korean
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Сонбу-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Seonbu-dong. Not a real listing.
+  ko: 선부동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Оператор упаковочной линии
+    en: Packing-line operator
+    ko: 포장라인 작업
+  age_min: 30
+  age_max: null
+  gender: any
+  overtime: unknown
+  special_shifts: 'yes'
+  daily_pay: 'yes'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Производство пеноматериалов
+    en: Foam material production
+    ko: 발포소재 생산
+  age_min: null
+  age_max: 40
+  gender: male
+  overtime: 'no'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Складская зона Ансана
+    en: Ansan logistics area
+    ko: 안산 물류지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.
+- title:
+    ru: Упаковка автокрепежа
+    en: Automotive fastener packing
+    ko: 자동차 체결부품 포장
+  age_min: 25
+  age_max: 50
+  gender: male
+  overtime: unknown
+  special_shifts: 'no'
+  daily_pay: 'no'
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: 'Сварка: помощник'
+    en: Welding helper
+    ko: 용접 보조
+  age_min: 30
+  age_max: 55
+  gender: female
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: unknown
+  workplace:
+    ru: Промышленная зона Ансана
+    en: Ansan industrial area
+    ko: 안산 산업단지
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Тестовая запись. Требуется проверка условий перед публикацией.
+    en: Demo record. Verify conditions before publishing.
+    ko: 테스트 데이터. 게시 전 조건 확인 필요.

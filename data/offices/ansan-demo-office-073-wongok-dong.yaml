@@ -1,0 +1,74 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Job Point 073 — Вонгок-дон (ДЕМО)
+  en: Ansan Job Point 073 — Wongok-dong (DEMO)
+  ko: 안산 잡포인트 073 — 원곡동 (데모)
+city: ansan
+district: wongok-dong
+address: ''
+landmark:
+  ru: Вонгок-дон
+  en: Wongok-dong
+  ko: 원곡동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Russian
+  ko: 확인 필요
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Вонгок-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Wongok-dong. Not a real listing.
+  ko: 원곡동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Сборка фильтров
+    en: Filter assembly
+    ko: 필터 조립
+  age_min: 20
+  age_max: 40
+  gender: any
+  overtime: 'yes'
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Почасовая ставка не указана; зависит от смены.
+    en: Hourly rate not specified; depends on shift.
+    ko: 시급 미기재, 근무조에 따라 다름.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Производство полуфабрикатов
+    en: Prepared-food production
+    ko: 식품 제조
+  age_min: null
+  age_max: 60
+  gender: female
+  overtime: 'yes'
+  special_shifts: 'no'
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Условия могут зависеть от конкретного завода и смены.
+    en: Conditions may depend on the specific factory and shift.
+    ko: 근무조건은 공장과 근무조에 따라 달라질 수 있음.

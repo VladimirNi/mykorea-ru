@@ -1,0 +1,74 @@
+# ДЕМО-ДАННЫЕ: вымышленная карточка для тестирования интерфейса.
+# active: true — карточка будет видна на тестовом сайте.
+# district использует только ID, которые уже распознаются вашим текущим locations.yaml.
+active: true
+name:
+  ru: Ansan Job Point 053 — Понго-дон (ДЕМО)
+  en: Ansan Job Point 053 — Bono-dong (DEMO)
+  ko: 안산 잡포인트 053 — 본오동 (데모)
+city: ansan
+district: bono-dong
+address: ''
+landmark:
+  ru: Понго-дон
+  en: Bono-dong
+  ko: 본오동
+photo: ''
+phone: ''
+telegram: ''
+kakao: ''
+map_url: ''
+languages:
+  ru: Русский
+  en: Confirm
+  ko: 러시아어
+description:
+  ru: Демо-карточка для тестирования базы самущилей в районе Понго-дон. Не является реальным объявлением.
+  en: Demo office card for testing the Ansan jobs database in Bono-dong. Not a real listing.
+  ko: 본오동 지역 안산 구인 데이터베이스 테스트용 데모 카드입니다. 실제 구인 정보가 아닙니다.
+updated: ''
+profiles:
+- title:
+    ru: Литьё пластика
+    en: Plastic injection molding
+    ko: 사출 작업
+  age_min: 20
+  age_max: 40
+  gender: male
+  overtime: unknown
+  special_shifts: unknown
+  daily_pay: 'no'
+  workplace:
+    ru: Производственная зона возле Сонгок
+    en: Manufacturing area near Seonggok
+    ko: 성곡동 인근 산업지역
+  pay_note:
+    ru: Ставка не указана; уточнять при звонке.
+    en: Pay rate not specified; confirm by phone.
+    ko: 급여 미기재, 전화 확인 필요.
+  note:
+    ru: Подходит для тестирования фильтров пола, возраста и смен.
+    en: Designed to test gender, age and shift filters.
+    ko: 성별·연령·근무조 필터 테스트용.
+- title:
+    ru: Упаковка хлебобулочных изделий
+    en: Bakery packing
+    ko: 제과제빵 포장
+  age_min: 18
+  age_max: null
+  gender: any
+  overtime: 'no'
+  special_shifts: unknown
+  daily_pay: unknown
+  workplace:
+    ru: Производственная зона возле Вонси
+    en: Manufacturing area near Wonsi
+    ko: 원시동 인근 산업지역
+  pay_note:
+    ru: Ильтан возможен только если отдельно подтвердят.
+    en: Daily-pay option only if separately confirmed.
+    ko: 일당은 별도 확인 시 가능.
+  note:
+    ru: Не содержит реальных контактов работодателя.
+    en: Contains no real employer contact details.
+    ko: 실제 업체 연락처가 포함되지 않음.
