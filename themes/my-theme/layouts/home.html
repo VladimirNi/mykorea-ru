@@ -9,9 +9,11 @@
     {{ partial "category-navigation.html" (dict "page" .) }}
   </section>
   {{ with .Content }}<div class="home-intro post-content">{{ . }}</div>{{ end }}
+  {{/*
   {{ with .Site.GetPage "/work" }}
   <a class="work-home-link" href="{{ .RelPermalink }}"><span><span class="eyebrow">{{ i18n "work_eyebrow" }}</span><strong>{{ .Title }}</strong><span>{{ i18n "work_intro" }}</span></span><span aria-hidden="true">↗</span></a>
   {{ end }}
+  */}}
   {{ partial "pin-strip.html" . }}
   <section class="latest-section" aria-labelledby="latest-title">
     <div class="section-heading"><h2 id="latest-title">{{ i18n "fresh_posts" }}</h2><a href="{{ "/posts/" | relLangURL }}">{{ i18n "feed_title" }} ↗</a></div>

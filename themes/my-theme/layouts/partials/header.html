@@ -2,7 +2,9 @@
   <nav class="top-actions content-shell" aria-label="{{ i18n "navigation" }}">
     <button type="button" class="top-action" data-back hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18"/></svg><span>{{ i18n "back" }}</span></button>
     <a href="{{ .Site.Home.RelPermalink }}" class="top-action"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z"/></svg><span>{{ i18n "to_home" }}</span></a>
+    {{/*
     {{ with .Site.GetPage "/work" }}<a class="top-action top-work" href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "work_nav" }} ↗</a>{{ end }}
+    */}}
   </nav>
   {{ if not .IsHome }}<div class="content-shell">{{ partial "category-navigation.html" (dict "page" . "compact" true) }}</div>{{ end }}
 </header>
