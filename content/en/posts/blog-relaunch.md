@@ -1,7 +1,7 @@
 ---
 title: "A New Chapter: Welcome to My Personal Korea Blog"
 date: 2025-12-19T09:00:00+09:00
-categories: ["News", "Updates"]
+categories: ["News"]
 image: "/images/mk-archive-n.webp"
 tags:
   ["Announcement", "Korea", "Personal Blog", "Archive", "Expat Life", "Website"]
