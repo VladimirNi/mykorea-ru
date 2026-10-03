@@ -8,7 +8,7 @@ tags:
 vk_discussion: "https://vk.com/wall-54610787_2528"
 ---
 
-![MyKorea Blog Relaunch](/images/mk-archive-n.webp)
+![MyKorea Blog Relaunch](/images/mk-archive-n.avif)
 
 Dear Readers,
 

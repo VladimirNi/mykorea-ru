@@ -6,7 +6,7 @@ image: "/images/mk-archive-n.webp"
 tags: ["공지", "한국생활", "아카이브", "리뉴얼", "일상", "웹사이트"]
 ---
 
-![마이코리아 블로그 리뉴얼](/images/mk-archive-n.webp)
+![마이코리아 블로그 리뉴얼](/images/mk-archive-n.avif)
 
 독자 여러분, 안녕하세요!
 
